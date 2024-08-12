@@ -25,42 +25,42 @@ import WorkSliderBtns from "@/components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "forntend",
-    title: "Web Development Project",
-    description: "A portfolio website to showcase my work and skills.",
-    stacks: [{ name: "React" }, { name: "Next.js" }, { name: "Tailwind CSS" }],
-    image: "/assets/work/thumb1.png",
+    category: "Full Stack ",
+    title: "ShopO",
+    description: "ShopO is an Online ecommerece website that is build using the MERN stack, it has the 3 panel, one is Admin, second is Seller and third is Customer, If you want to see the Demo then click on the Demo link.",
+    stacks: [{ name: "React" }, { name: "Node" }, { name: "Tailwind CSS" },{ name: "ExpressJS" },{ name: "MongoDB" }],
+    image: "/assets/work/ShopO.png",
     live: "",
     github: "",
   },
   {
     num: "02",
-    title: "Fullstack Project",
-    category: "Frontend",
+    title: "Portfolio",
+    category: "Web Development",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate magnam modi.",
+      "My Portfolio is a personal website designed to showcase my skills, experience, and projects to potential employers, clients, and collaborators. It serves as a professional online presence that highlights my expertise, accomplishments, and interests.",
     stacks: [
       { name: "Next.js" },
       { name: "Tailwind.css" },
       { name: "Node.js" },
     ],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "",
+    image: "/assets/work/Portfolio.png",
+    live: "https://purushotamsharma.netlify.app/",
+    github: "https://github.com/PurushotamSharma",
   },
-  {
-    num: "03",
-    title: "Chat Application Project",
-    description: "A Chat application build in react and firebase.",
-    stacks: [
-      { name: "Next.js" },
-      { name: "Tailwind.css" },
-      { name: "Node.js" },
-    ],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "",
-  },
+  // {
+  //   num: "03",
+  //   title: "Chat Application Project",
+  //   description: "A Chat application build in react and firebase.",
+  //   stacks: [
+  //     { name: "Next.js" },
+  //     { name: "Tailwind.css" },
+  //     { name: "Node.js" },
+  //   ],
+  //   image: "/assets/work/thumb3.png",
+  //   live: "",
+  //   github: "",
+  // },
 ];
 
 const Work = () => {

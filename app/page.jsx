@@ -1,7 +1,6 @@
 import Photo from "@/components/Photo";
 import Social from "@/components/Social";
 import Stats from "@/components/Stats";
-import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
 const Home = () => {
@@ -20,22 +19,24 @@ const Home = () => {
             </p>
 
             {/* button and socials */}
-            
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button variant="outline" size="lg" className="flex uppercase gap-2 items-center">
+              <a
+                 href="/assets/PurushotamSharma.pdf" download="PurushotamSharma.pdf"
+
+                className="flex uppercase gap-2 items-center bg-transparent border border-accent text-accent py-3 px-6 rounded-lg hover:bg-accent hover:text-primary transition-all duration-500"
+              >
                 <span>Download CV</span>
-                <FiDownload className="text-xl"/>
-              </Button>
+                <FiDownload className="text-xl" />
+              </a>
               <div className="mb-8 xl:mb-0">
                 <Social
-                containerStyles="flex gap-6"
-                iconStyles="w-9 h-9 border border-accent hover:bg-accent hover:text-primary rounded-full flex items-center justify-center  text- accent text-base  hover-transition-all duration-500"
+                  containerStyles="flex gap-6"
+                  iconStyles="w-9 h-9 border border-accent hover:bg-accent hover:text-primary rounded-full flex items-center justify-center text-accent text-base transition-all duration-500"
                 />
               </div>
             </div>
-
-
           </div>
+
           {/* Photo */}
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Photo />
@@ -44,7 +45,7 @@ const Home = () => {
       </div>
       <Stats />
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
