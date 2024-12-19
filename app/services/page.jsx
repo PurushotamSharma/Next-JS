@@ -1,82 +1,127 @@
+// app/services/page.jsx
 "use client";
-import { BsArrowDownRight } from "react-icons/bs";
-import Link from "next/link";
-
-const services = [
-  {
-    num: '01',
-    title: "Web Development",
-    description: "We build responsive websites that are optimized for performance and SEO.",
-    href: ""
-  },
-  {
-    num: '02',
-    title: "Cloud Services",
-    description: "We provide cloud services for all the cloud provider  that are scalable and secure.",
-    href: ""
-  },
-  {
-    num: '03',
-    title: "UI/UX Design",
-    description: "We design user interfaces that are intuitive and visually appealing.",
-    href: ""
-  },
-  {
-    num: '04',
-    title: "Logo Design",
-    description: "Transforming brand identities with creative, impactful logo designs that leave a lasting impression.",
-    href: ""
-  },
-];
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { services } from '@/lib/services-data';
 
-
-
-const Services = () => {
+// ServiceCard Component
+const ServiceCard = ({ num, title, description, href, index }) => {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0">
-      <div className="container mx-auto">
-      <motion.div
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: {
-          delay: 2.4,
-          duration: 0.4,
-          ease:"easeIn"
-        },
-      }}
-      className="grid grid-cols md:grid-cols-2 gap-[60px]"
-      >
-        {services.map((service, index) => {
-          return(
-            <div key={index} className="flex-1 flex flex-col justify-center gap-6 group">
-{/* top */}
-<div className="w-full flex justify-between items-center">
-  <div  className="text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500">{service.num}</div>
-  <Link href={service.href}
-  className="w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent flex items-center justify-center transition-all duration-500 hover:-rotate-45"
-  >
-    <BsArrowDownRight className="text-primary text-3xl" />
-  </Link>
-</div>
-{/* title */}
-<h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">{service.title}</h2>
-{/* description */}
-<p className="text-white/60">{service.description}</p>
-{/* border */}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="relative group"
+    >
+      <div className="p-8 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 bg-[#1A2333]/20">
+        {/* Number Badge */}
+        <div className="inline-block px-4 py-1 rounded-full text-sm font-mono border border-white/10 mb-6">
+          {num}
+        </div>
 
-<div className="border-b border-white/20 w-full"></div>
+        {/* Title with Hover Effect */}
+        <h3 className="text-3xl font-bold mb-4 text-white group-hover:text-[#4ADE80] transition-colors duration-300">
+          {title}
+        </h3>
 
-            </div>
-          )
-        })}
+        {/* Description */}
+        <p className="text-white/60 mb-8 leading-relaxed">
+          {description}
+        </p>
 
-      </motion.div>
+        {/* Link Button */}
+        <Link href={href} className="inline-flex items-center">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 text-[#4ADE80] font-medium"
+          >
+            Learn more
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </motion.div>
+        </Link>
+
+        {/* Decorative Elements */}
+        <div className="absolute -z-10 top-0 left-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-[#4ADE80]/10 to-transparent" />
+      </div>
+    </motion.div>
+  );
+};
+
+// Main Services Page Component
+const ServicesPage = () => {
+  return (
+    <section className="relative min-h-screen pt-24">
+      {/* Background Effects */}
+      <div className="fixed inset-0 -z-50">
+        {/* Dark gradient background */}
+        <div className="absolute inset-0 bg-[#0F172A] bg-gradient-to-b from-gray-900 to-gray-800" />
+        
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        
+        {/* Radial gradient */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(74,222,128,0.1),transparent_50%)]" />
+      </div>
+
+      <div className="container mx-auto px-4 py-20">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl mx-auto mb-16 text-center"
+        >
+          <div className="inline-block px-4 py-1 rounded-full text-sm font-mono border border-white/10 mb-6 text-white/60 bg-[#1A2333]/20">
+            Our Services
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Comprehensive Digital Solutions
+          </h1>
+          <p className="text-white/60 text-lg">
+            We offer a wide range of digital services to help your business grow and succeed in the modern digital landscape.
+          </p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          {services.map((service, index) => (
+            <ServiceCard
+              key={service.num}
+              index={index}
+              {...service}
+            />
+          ))}
+        </div>
+
+        {/* Contact CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-20 text-center"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">
+            Need a Custom Solution?
+          </h2>
+          <p className="text-white/60 mb-8">
+            Let's discuss how we can help you achieve your goals
+          </p>
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-[#4ADE80] text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-[#4ADE80]/90 transition-colors"
+            >
+              Get in Touch
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Services
+export default ServicesPage;

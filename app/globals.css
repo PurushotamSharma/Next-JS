@@ -4,8 +4,10 @@
 
 @layer base {
   body {
-    @apply font-primary bg-primary text-white leading-loose;
+    @apply font-primary bg-primary text-white leading-loose relative overflow-x-hidden;
   }
+
+  /* Typography */
   .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
   }
@@ -15,13 +17,72 @@
   .h3 {
     @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
   }
-  .text-outline{
-    -webkit-text-stroke:1px #ffffff ;
-  
+
+  /* Custom Text Effects */
+  .text-outline {
+    -webkit-text-stroke: 1px #ffffff;
+    @apply transition-all duration-300;
   }
-  .text-outline-hover{
-    -webkit-text-stroke:1px #00ff99 ;
-    
+  .text-outline-hover {
+    -webkit-text-stroke: 1px #00ff99;
+    @apply transition-all duration-300;
   }
 }
 
+@layer components {
+  /* Button Styles */
+  .btn {
+    @apply rounded-full transition-all duration-300;
+  }
+  .btn-accent {
+    @apply bg-accent text-primary hover:bg-accent-hover px-6 py-3 btn;
+  }
+  .btn-outline {
+    @apply border border-accent text-accent hover:bg-accent hover:text-primary px-6 py-3 btn;
+  }
+
+  /* Card Styles */
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply relative text-white/70 hover:text-white transition-colors duration-300 
+           after:content-[''] after:absolute after:left-0 after:bottom-0 
+           after:h-[2px] after:w-0 after:bg-accent 
+           after:transition-all after:duration-300 
+           hover:after:w-full;
+  }
+
+  /* Grid Background */
+  .grid-bg {
+    @apply absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px];
+  }
+
+  /* Content Container */
+  .content-container {
+    @apply relative;
+  }
+
+  /* Gradient Overlays */
+  .gradient-overlay {
+    @apply absolute inset-0;
+    background: 
+      radial-gradient(circle at 40% 60%, rgba(0, 255, 153, 0.15), transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(0, 255, 153, 0.15), transparent 50%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-primary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent/50 rounded-full hover:bg-accent transition-colors duration-300;
+}
