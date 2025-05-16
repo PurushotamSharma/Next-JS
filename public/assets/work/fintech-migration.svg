@@ -1,0 +1,175 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2333" />
+      <stop offset="100%" stop-color="#0F1525" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="box-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A3343" />
+      <stop offset="100%" stop-color="#1A2333" />
+    </linearGradient>
+    <linearGradient id="cloud-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#2A3343" />
+      <stop offset="100%" stop-color="#1A2333" />
+    </linearGradient>
+    <linearGradient id="progress-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3366FF" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#3366FF" stop-opacity="0.7" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg-gradient)"/>
+  <rect x="50" y="50" width="700" height="300" rx="10" fill="#2A3343" stroke="#3366FF" stroke-width="2"/>
+  
+  <!-- Grid Pattern -->
+  <path d="M0,0 L800,400" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  <path d="M0,400 L800,0" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  
+  <!-- Migration Flow -->
+  <!-- Legacy System Box with Glow -->
+  <rect x="100" y="150" width="200" height="150" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="2" filter="url(#glow)"/>
+  <text x="200" y="175" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Legacy Systems</text>
+  <text x="200" y="195" font-family="Arial" font-size="10" fill="#3366FF" text-anchor="middle">Monolithic Architecture</text>
+  
+  <!-- Server Icons with Details -->
+  <rect x="130" y="210" width="40" height="60" rx="2" fill="url(#box-gradient)" stroke="#3366FF" stroke-width="1"/>
+  <rect x="135" y="215" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <rect x="135" y="225" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <rect x="135" y="235" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <text x="150" y="255" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Core</text>
+  
+  <rect x="180" y="210" width="40" height="60" rx="2" fill="url(#box-gradient)" stroke="#3366FF" stroke-width="1"/>
+  <rect x="185" y="215" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <rect x="185" y="225" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <rect x="185" y="235" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <text x="200" y="255" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">DB</text>
+  
+  <rect x="230" y="210" width="40" height="60" rx="2" fill="url(#box-gradient)" stroke="#3366FF" stroke-width="1"/>
+  <rect x="235" y="215" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <rect x="235" y="225" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <rect x="235" y="235" width="30" height="5" rx="1" fill="#3366FF" opacity="0.5"/>
+  <text x="250" y="255" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">UI</text>
+  
+  <!-- Legacy System Characteristics -->
+  <rect x="120" y="280" width="50" height="15" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1" opacity="0.7"/>
+  <text x="145" y="291" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">COBOL</text>
+  
+  <rect x="175" y="280" width="50" height="15" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1" opacity="0.7"/>
+  <text x="200" y="291" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Oracle</text>
+  
+  <rect x="230" y="280" width="50" height="15" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1" opacity="0.7"/>
+  <text x="255" y="291" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Mainframe</text>
+  
+  <!-- Migration Path with Animation -->
+  <path d="M300,225 C350,225 350,225 400,225" fill="none" stroke="#3366FF" stroke-width="2" stroke-dasharray="10,5">
+    <animate attributeName="stroke-dashoffset" values="15;0" dur="10s" repeatCount="indefinite" />
+  </path>
+  <polygon points="390,220 400,225 390,230" fill="#3366FF">
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+  </polygon>
+  
+  <!-- Data Packets Moving Along Path -->
+  <circle cx="320" cy="225" r="3" fill="#3366FF">
+    <animate attributeName="cx" values="300;400" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="340" cy="225" r="3" fill="#3366FF">
+    <animate attributeName="cx" values="300;400" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="360" cy="225" r="3" fill="#3366FF">
+    <animate attributeName="cx" values="300;400" dur="5s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0;1;0" dur="5s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Cloud System Box with Glow -->
+  <rect x="500" y="150" width="200" height="150" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="2" filter="url(#glow)"/>
+  <text x="600" y="175" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Cloud-Native</text>
+  <text x="600" y="195" font-family="Arial" font-size="10" fill="#3366FF" text-anchor="middle">Microservices Architecture</text>
+  
+  <!-- Cloud with Gradient -->
+  <path d="M600,220 Q630,190 660,220 Q690,200 680,240 Q710,250 680,270 Q670,300 640,280 Q610,300 590,270 Q560,280 570,250 Q550,230 570,210 Q560,190 580,200 Q580,180 600,220" fill="url(#cloud-gradient)" stroke="#3366FF" stroke-width="1"/>
+  
+  <!-- Microservices Containers -->
+  <rect x="570" y="230" width="25" height="25" rx="2" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="582" y="245" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">API</text>
+  
+  <rect x="600" y="230" width="25" height="25" rx="2" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="612" y="245" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Auth</text>
+  
+  <rect x="630" y="230" width="25" height="25" rx="2" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="642" y="245" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Pay</text>
+  
+  <rect x="570" y="260" width="25" height="25" rx="2" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="582" y="275" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">User</text>
+  
+  <rect x="600" y="260" width="25" height="25" rx="2" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="612" y="275" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Tx</text>
+  
+  <rect x="630" y="260" width="25" height="25" rx="2" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="642" y="275" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Risk</text>
+  
+  <!-- Cloud System Characteristics -->
+  <rect x="520" y="295" width="50" height="15" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1" opacity="0.7"/>
+  <text x="545" y="305" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Kubernetes</text>
+  
+  <rect x="575" y="295" width="50" height="15" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1" opacity="0.7"/>
+  <text x="600" y="305" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">NoSQL</text>
+  
+  <rect x="630" y="295" width="50" height="15" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1" opacity="0.7"/>
+  <text x="655" y="305" font-family="Arial" font-size="8" fill="#FFFFFF" text-anchor="middle">Serverless</text>
+  
+  <!-- Migration Steps with Progress Indicators -->
+  <rect x="350" y="150" width="100" height="30" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <rect x="355" y="155" width="90" height="20" rx="3" fill="url(#progress-gradient)" opacity="1"/>
+  <text x="400" y="170" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Assessment</text>
+  
+  <rect x="350" y="190" width="100" height="30" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <rect x="355" y="195" width="70" height="20" rx="3" fill="url(#progress-gradient)" opacity="0.8"/>
+  <text x="400" y="210" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Refactoring</text>
+  
+  <rect x="350" y="230" width="100" height="30" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <rect x="355" y="235" width="50" height="20" rx="3" fill="url(#progress-gradient)" opacity="0.6"/>
+  <text x="400" y="250" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Migration</text>
+  
+  <rect x="350" y="270" width="100" height="30" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <rect x="355" y="275" width="30" height="20" rx="3" fill="url(#progress-gradient)" opacity="0.4"/>
+  <text x="400" y="290" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Optimization</text>
+  
+  <!-- Step Icons -->
+  <circle cx="365" y="165" r="7" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="365" y="168" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">1</text>
+  
+  <circle cx="365" y="205" r="7" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="365" y="208" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">2</text>
+  
+  <circle cx="365" y="245" r="7" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="365" y="248" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">3</text>
+  
+  <circle cx="365" y="285" r="7" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="365" y="288" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">4</text>
+  
+  <!-- Financial Icons -->
+  <circle cx="100" y="100" r="15" fill="none" stroke="#3366FF" stroke-width="1" opacity="0.5"/>
+  <text x="100" y="105" font-family="Arial" font-size="14" fill="#3366FF" text-anchor="middle">$</text>
+  
+  <circle cx="700" y="100" r="15" fill="none" stroke="#3366FF" stroke-width="1" opacity="0.5"/>
+  <text x="700" y="105" font-family="Arial" font-size="14" fill="#3366FF" text-anchor="middle">$</text>
+  
+  <!-- Metrics -->
+  <rect x="350" y="310" width="100" height="30" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="1" opacity="0.7"/>
+  <text x="400" y="330" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle">75% Cost Reduction</text>
+  
+  <!-- Glow Effects -->
+  <rect x="100" y="150" width="200" height="150" rx="5" fill="none" stroke="#3366FF" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  <rect x="500" y="150" width="200" height="150" rx="5" fill="none" stroke="#3366FF" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  
+  <!-- Title with glow effect -->
+  <text x="400" y="90" font-family="Arial" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" filter="url(#glow)">FinTech Cloud Migration</text>
+  <text x="400" y="120" font-family="Arial" font-size="18" fill="#3366FF" text-anchor="middle">From Legacy to Cloud-Native Architecture</text>
+</svg>

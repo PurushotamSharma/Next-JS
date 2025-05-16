@@ -1,0 +1,104 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2333" />
+      <stop offset="100%" stop-color="#0F1525" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="cloud-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#2A3343" />
+      <stop offset="100%" stop-color="#1A2333" />
+    </radialGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg-gradient)"/>
+  <rect x="50" y="50" width="700" height="300" rx="10" fill="#2A3343" stroke="#3366FF" stroke-width="2"/>
+  
+  <!-- Grid Pattern -->
+  <path d="M0,0 L800,400" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  <path d="M0,400 L800,0" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  
+  <!-- Primary Region - AWS -->
+  <path d="M250,150 Q300,100 350,150 Q400,120 380,170 Q420,180 400,210 Q440,240 390,250 Q370,300 320,270 Q290,310 260,280 Q210,300 220,250 Q180,230 210,200 Q190,170 220,160 Q220,120 250,150" fill="url(#cloud-gradient)" stroke="#3366FF" stroke-width="2"/>
+  <text x="300" y="190" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">AWS</text>
+  <text x="300" y="210" font-family="Arial" font-size="12" fill="#3366FF" text-anchor="middle">Primary Region</text>
+
+  <!-- Secondary Region - GCP -->
+  <path d="M570,150 Q620,100 670,150 Q720,120 700,170 Q740,180 720,210 Q760,240 710,250 Q690,300 640,270 Q610,310 580,280 Q530,300 540,250 Q500,230 530,200 Q510,170 540,160 Q540,120 570,150" fill="url(#cloud-gradient)" stroke="#3366FF" stroke-width="2"/>
+  <text x="620" y="190" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle" font-weight="bold">GCP</text>
+  <text x="620" y="210" font-family="Arial" font-size="12" fill="#3366FF" text-anchor="middle">DR Region</text>
+  
+  <!-- AWS Services -->
+  <rect x="250" y="220" width="40" height="30" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="270" y="240" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">EC2</text>
+  
+  <rect x="300" y="220" width="40" height="30" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="320" y="240" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">RDS</text>
+  
+  <rect x="350" y="220" width="40" height="30" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="370" y="240" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">S3</text>
+  
+  <!-- GCP Services -->
+  <rect x="570" y="220" width="40" height="30" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="590" y="240" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">GCE</text>
+  
+  <rect x="620" y="220" width="40" height="30" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="640" y="240" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">SQL</text>
+  
+  <rect x="670" y="220" width="40" height="30" rx="3" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="690" y="240" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">GCS</text>
+  
+  <!-- Connection Between Clouds -->
+  <line x1="390" y1="210" x2="530" y2="210" stroke="#3366FF" stroke-width="2" stroke-dasharray="10,5"/>
+  
+  <!-- Data Replication -->
+  <path d="M390,190 C460,170 460,250 530,230" fill="none" stroke="#3366FF" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="530,225 535,230 530,235" fill="#3366FF"/>
+  <text x="460" y="185" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Data Replication</text>
+  
+  <!-- Failover Controller -->
+  <circle cx="460" cy="210" r="20" fill="#1A2333" stroke="#3366FF" stroke-width="2"/>
+  <text x="460" y="214" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">DR</text>
+  
+  <!-- Active-Active Indicator -->
+  <rect x="435" y="250" width="50" height="20" rx="10" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="460" y="264" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Active-Active</text>
+  
+  <!-- Status Indicators -->
+  <circle cx="270" y="270" r="8" fill="#00FF99" stroke="#3366FF" stroke-width="1"/>
+  <text x="290" y="274" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="start">Active</text>
+  
+  <circle cx="590" y="270" r="8" fill="#3366FF" stroke="#3366FF" stroke-width="1" opacity="0.5"/>
+  <text x="610" y="274" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="start">Standby</text>
+  
+  <!-- Monitoring Dashboard -->
+  <rect x="100" y="280" width="160" height="60" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="180" y="300" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle">Monitoring</text>
+  <line x1="120" y1="310" x2="240" y2="310" stroke="#3366FF" stroke-width="1" opacity="0.5"/>
+  <line x1="120" y1="320" x2="200" y2="320" stroke="#3366FF" stroke-width="1" opacity="0.5"/>
+  <line x1="120" y1="330" x2="220" y2="330" stroke="#3366FF" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Testing Framework -->
+  <rect x="540" y="280" width="160" height="60" rx="5" fill="#1A2333" stroke="#3366FF" stroke-width="1"/>
+  <text x="620" y="300" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle">DR Testing</text>
+  <rect x="560" y="310" width="20" height="20" rx="3" fill="#3366FF" opacity="0.3"/>
+  <rect x="590" y="310" width="20" height="20" rx="3" fill="#3366FF" opacity="0.3"/>
+  <rect x="620" y="310" width="20" height="20" rx="3" fill="#3366FF" opacity="0.3"/>
+  <rect x="650" y="310" width="20" height="20" rx="3" fill="#3366FF" opacity="0.3"/>
+  
+  <!-- Glow Effects -->
+  <path d="M250,150 Q300,100 350,150 Q400,120 380,170 Q420,180 400,210 Q440,240 390,250 Q370,300 320,270 Q290,310 260,280 Q210,300 220,250 Q180,230 210,200 Q190,170 220,160 Q220,120 250,150" fill="none" stroke="#3366FF" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  <path d="M570,150 Q620,100 670,150 Q720,120 700,170 Q740,180 720,210 Q760,240 710,250 Q690,300 640,270 Q610,310 580,280 Q530,300 540,250 Q500,230 530,200 Q510,170 540,160 Q540,120 570,150" fill="none" stroke="#3366FF" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  
+  <!-- Title with glow effect -->
+  <text x="400" y="100" font-family="Arial" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" filter="url(#glow)">Multi-Cloud Disaster Recovery</text>
+  <text x="400" y="130" font-family="Arial" font-size="18" fill="#3366FF" text-anchor="middle">Ensuring Business Continuity</text>
+  
+  <!-- Metrics -->
+  <text x="400" y="340" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle">Recovery time reduced from 8+ hours to under 10 minutes</text>
+  <text x="400" y="360" font-family="Arial" font-size="14" fill="#3366FF" text-anchor="middle">40% cost reduction compared to previous DR solution</text>
+</svg>

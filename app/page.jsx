@@ -9,12 +9,19 @@ export default function Home() {
   const [showCursor, setShowCursor] = useState(true);
   const [output, setOutput] = useState([]);
 
+  // Social media links from your previous component
+  const socialLinks = [
+    { Icon: Github, url: "https://github.com/PurushotamSharma" },
+    { Icon: Linkedin, url: "https://www.linkedin.com/in/purushotamsharma/" },
+    { Icon: Twitter, url: "https://twitter.com/iampurushotamps" }
+  ];
+
   const processCommand = (input) => {
     const commands = {
       'help': 'Available commands: help, about, skills, experience, contact, clear',
       'about': 'I am a DevOps engineer passionate about automation and cloud infrastructure.',
       'skills': 'Docker, Kubernetes, AWS, Jenkins, Terraform, Git, CI/CD',
-      'experience': '2+ years of experience in DevOps and cloud technologies',
+      'experience': '3+ years of experience in DevOps and cloud technologies',
       'contact': 'Email: sharmapurushotam57@gmail.com | GitHub: @PurushotamSharma | Contact: 7383055495',
       'clear': 'CLEAR'
     };
@@ -192,9 +199,12 @@ purushotam 5678  1.5  0.8  4492428  138240  ??  S    9:30AM   0:10.32 ${searchTe
               </motion.button>
 
               <div className="flex gap-5">
-                {[Github, Linkedin, Twitter].map((Icon, i) => (
+                {socialLinks.map((social, i) => (
                   <motion.a
                     key={i}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     variants={animations.itemVariants}
                     whileHover={{ 
                       scale: 1.1, 
@@ -206,7 +216,7 @@ purushotam 5678  1.5  0.8  4492428  138240  ??  S    9:30AM   0:10.32 ${searchTe
                     <motion.div 
                       className="absolute inset-0 bg-accent/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     />
-                    <Icon 
+                    <social.Icon 
                       size={24}
                       className="group-hover:rotate-12 transition-transform duration-300" 
                     />

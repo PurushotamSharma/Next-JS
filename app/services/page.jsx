@@ -4,7 +4,34 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { services } from '@/lib/services-data';
+
+// Updated services data with only the requested services
+const services = [
+  {
+    num: "01",
+    title: "UI/UX Design",
+    description: "Create intuitive and engaging user experiences with our UI/UX design services. We focus on user-centered design principles to deliver interfaces that are both beautiful and functional.",
+    href: "/services/ui-ux-design"
+  },
+  {
+    num: "02",
+    title: "DevOps Engineering",
+    description: "Streamline your development and operations with our DevOps services. We implement CI/CD pipelines, infrastructure as code, and automated testing to enhance your software delivery lifecycle.",
+    href: "/services/devops"
+  },
+  {
+    num: "03",
+    title: "Cloud Solutions",
+    description: "Leverage the power of cloud computing with our comprehensive cloud services. We help you migrate, optimize, and manage your infrastructure on AWS, Azure, or Google Cloud Platform.",
+    href: "/services/cloud"
+  },
+  {
+    num: "04",
+    title: "Web Development",
+    description: "Build modern, responsive, and scalable web applications with our expert development team. We utilize the latest technologies to create powerful web solutions tailored to your business needs.",
+    href: "/services/web-development"
+  }
+];
 
 // ServiceCard Component
 const ServiceCard = ({ num, title, description, href, index }) => {
@@ -86,7 +113,7 @@ const ServicesPage = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
           {services.map((service, index) => (
             <ServiceCard
               key={service.num}

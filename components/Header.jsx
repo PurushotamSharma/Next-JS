@@ -46,14 +46,16 @@ const Header = () => {
             <Nav />
           </div>
 
-          {/* Hire Me Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="hidden xl:flex px-5 py-2 bg-accent text-primary rounded-full hover:bg-accent-hover transition-all duration-300"
-          >
-            Hire Me
-          </motion.button>
+          {/* Hire Me Button - Redirects to contact page */}
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden xl:flex px-5 py-2 bg-accent text-primary rounded-full hover:bg-accent-hover transition-all duration-300"
+            >
+              Hire Me
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Mobile Menu */}

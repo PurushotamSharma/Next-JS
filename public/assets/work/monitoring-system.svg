@@ -1,0 +1,104 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2333" />
+      <stop offset="100%" stop-color="#0F1525" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="chart-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00FF99" stop-opacity="0" />
+      <stop offset="100%" stop-color="#00FF99" stop-opacity="0.3" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg-gradient)"/>
+  <rect x="50" y="50" width="700" height="300" rx="10" fill="#2A3343" stroke="#00FF99" stroke-width="2"/>
+  
+  <!-- Grid Pattern -->
+  <path d="M0,0 L800,400" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  <path d="M0,400 L800,0" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  
+  <!-- Dashboard Header -->
+  <rect x="100" y="150" width="600" height="30" rx="5" fill="#1A2333" stroke="#00FF99" stroke-width="1"/>
+  <text x="130" y="170" font-family="Arial" font-size="12" fill="#FFFFFF">Microservices Health Dashboard</text>
+  <circle cx="680" cy="165" r="5" fill="#00FF99"/>
+  <text x="670" y="170" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="end">Live</text>
+  
+  <!-- Dashboard -->
+  <rect x="100" y="180" width="600" height="150" rx="5" fill="#1A2333" stroke="#00FF99" stroke-width="1"/>
+  
+  <!-- Line Chart -->
+  <rect x="110" y="190" width="280" height="130" rx="3" fill="#1A2333" stroke="#00FF99" stroke-width="1"/>
+  <text x="250" y="205" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">CPU Utilization</text>
+  
+  <!-- Chart Grid -->
+  <line x1="130" y1="220" x2="370" y2="220" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="130" y1="250" x2="370" y2="250" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="130" y1="280" x2="370" y2="280" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="130" y1="310" x2="370" y2="310" stroke="#3A4353" stroke-width="0.5"/>
+  
+  <line x1="130" y1="220" x2="130" y2="310" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="190" y1="220" x2="190" y2="310" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="250" y1="220" x2="250" y2="310" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="310" y1="220" x2="310" y2="310" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="370" y1="220" x2="370" y2="310" stroke="#3A4353" stroke-width="0.5"/>
+  
+  <!-- Chart Data -->
+  <polyline points="130,290 150,270 170,280 190,260 210,290 230,250 250,270 270,260 290,280 310,270 330,290 350,280 370,260" fill="none" stroke="#00FF99" stroke-width="2"/>
+  <path d="M130,290 L150,270 L170,280 L190,260 L210,290 L230,250 L250,270 L270,260 L290,280 L310,270 L330,290 L350,280 L370,260 L370,310 L130,310 Z" fill="url(#chart-gradient)" opacity="0.5"/>
+  
+  <!-- Chart Labels -->
+  <text x="130" y="320" font-family="Arial" font-size="8" fill="#AAAAAA" text-anchor="middle">00:00</text>
+  <text x="250" y="320" font-family="Arial" font-size="8" fill="#AAAAAA" text-anchor="middle">12:00</text>
+  <text x="370" y="320" font-family="Arial" font-size="8" fill="#AAAAAA" text-anchor="middle">23:59</text>
+  
+  <!-- Gauge Chart -->
+  <rect x="400" y="190" width="140" height="130" rx="3" fill="#1A2333" stroke="#00FF99" stroke-width="1"/>
+  <text x="470" y="205" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Response Time</text>
+  
+  <circle cx="470" cy="255" r="40" fill="none" stroke="#3A4353" stroke-width="1"/>
+  <path d="M470,255 L470,215" stroke="#3A4353" stroke-width="1" transform="rotate(45, 470, 255)"/>
+  <path d="M470,255 L470,215" stroke="#3A4353" stroke-width="1" transform="rotate(90, 470, 255)"/>
+  <path d="M470,255 L470,215" stroke="#3A4353" stroke-width="1" transform="rotate(135, 470, 255)"/>
+  <path d="M470,255 L470,215" stroke="#3A4353" stroke-width="1" transform="rotate(180, 470, 255)"/>
+  
+  <path d="M470,255 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0" fill="none" stroke="#3A4353" stroke-width="2"/>
+  <path d="M470,255 m-40,0 a40,40 0 0,1 80,0" fill="none" stroke="#00FF99" stroke-width="3"/>
+  <circle cx="470" cy="255" r="30" fill="#1A2333" stroke="#2A3343" stroke-width="1"/>
+  <text x="470" y="260" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">75%</text>
+  
+  <!-- Bar Chart -->
+  <rect x="550" y="190" width="140" height="130" rx="3" fill="#1A2333" stroke="#00FF99" stroke-width="1"/>
+  <text x="620" y="205" font-family="Arial" font-size="10" fill="#FFFFFF" text-anchor="middle">Service Health</text>
+  
+  <!-- Bar Chart Grid -->
+  <line x1="560" y1="220" x2="680" y2="220" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="560" y1="250" x2="680" y2="250" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="560" y1="280" x2="680" y2="280" stroke="#3A4353" stroke-width="0.5"/>
+  <line x1="560" y1="310" x2="680" y2="310" stroke="#3A4353" stroke-width="0.5"/>
+  
+  <!-- Bar Chart Data -->
+  <rect x="565" y="225" width="20" height="85" rx="2" fill="#00FF99" opacity="0.7"/>
+  <rect x="595" y="250" width="20" height="60" rx="2" fill="#00FF99" opacity="0.7"/>
+  <rect x="625" y="235" width="20" height="75" rx="2" fill="#00FF99" opacity="0.7"/>
+  <rect x="655" y="260" width="20" height="50" rx="2" fill="#00FF99" opacity="0.7"/>
+  
+  <!-- Bar Chart Labels -->
+  <text x="575" y="320" font-family="Arial" font-size="8" fill="#AAAAAA" text-anchor="middle">API</text>
+  <text x="605" y="320" font-family="Arial" font-size="8" fill="#AAAAAA" text-anchor="middle">Auth</text>
+  <text x="635" y="320" font-family="Arial" font-size="8" fill="#AAAAAA" text-anchor="middle">DB</text>
+  <text x="665" y="320" font-family="Arial" font-size="8" fill="#AAAAAA" text-anchor="middle">Cache</text>
+  
+  <!-- Alert Section -->
+  <rect x="100" y="340" width="600" height="30" rx="3" fill="#1A2333" stroke="#00FF99" stroke-width="1"/>
+  <circle cx="120" cy="355" r="8" fill="#00FF99" opacity="0.3"/>
+  <text x="350" y="360" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="left">Incident detection time reduced from 45 minutes to under 5 minutes</text>
+  
+  <!-- Title with glow effect -->
+  <text x="400" y="100" font-family="Arial" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" filter="url(#glow)">Microservices Monitoring System</text>
+  <text x="400" y="130" font-family="Arial" font-size="18" fill="#00FF99" text-anchor="middle">Real-Time Visibility at Scale</text>
+</svg>

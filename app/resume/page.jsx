@@ -24,7 +24,7 @@ import {
     SiArgo,
     SiNewrelic,
     SiDatadog
-  } from "react-icons/si";
+} from "react-icons/si";
 
 // about data
 const about = {
@@ -42,7 +42,7 @@ const about = {
         },
         {
             fieldName: "Experience",
-            fieldValue: "2+ Years",
+            fieldValue: "3+ Years",
         },
         {
             fieldName: "Skype",
@@ -72,12 +72,17 @@ const experience = {
     icon: "/assets/resume/badge.svg",
     title: "My Experience",
     description:
-        "I have worked as a DevOps engineer for two years, optimizing and automating software development processes. I have successfully delivered tailored solutions to enhance operational efficiency, working with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform. I have also freelanced, providing clients with CI/CD, IaC, and cloud services to meet their unique needs. I am committed to continuous learning and improvement, and my goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
+        "I have worked as a DevOps engineer for three years plus, optimizing and automating software development processes. I have successfully delivered tailored solutions to enhance operational efficiency, working with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform. I have also freelanced, providing clients with CI/CD, IaC, and cloud services to meet their unique needs. I am committed to continuous learning and improvement, and my goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
     items: [
+        {
+            company: "PieTech",
+            position: "DevOps Engineer",
+            duration: "05/2024 - Present",
+        },
         {
             company: "Credence Tech.",
             position: "DevOps Engineer",
-            duration: "11/2023 - Present",
+            duration: "11/2023 - 04/2025",
         },
         {
             company: "Quodars",
@@ -87,7 +92,7 @@ const experience = {
         {
             company: "Upwork",
             position: "Freelancer",
-            duration: "2022-Present",
+            duration: "2022 - Present",
         },
     ],
 };
@@ -111,7 +116,7 @@ const education = {
     ],
 };
 
-// Add more skills to the skillList
+// skills
 const skills = {
     title: "My Skills",
     description:
@@ -250,8 +255,6 @@ const skills = {
     ]
 };
 
-// ... keep your existing data objects (about, experience, education, skills) ...
-
 const Resume = () => {
     const [activeTab, setActiveTab] = useState("experience");
     const [hoveredSkill, setHoveredSkill] = useState(null);
@@ -368,8 +371,8 @@ const Resume = () => {
                                 whileTap={{ scale: 0.98 }}
                                 onClick={() => setActiveTab(tab)}
                                 className={`w-full py-4 px-6 rounded-xl transition-all duration-300 ${activeTab === tab
-                                        ? 'bg-[#4ADE80] text-gray-900'
-                                        : 'bg-transparent text-white hover:bg-white/5'
+                                    ? 'bg-[#4ADE80] text-gray-900'
+                                    : 'bg-transparent text-white hover:bg-white/5'
                                     }`}
                             >
                                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -437,74 +440,78 @@ const Resume = () => {
                                 </motion.div>
                             )}
 
-                            {activeTab === "skills" && (
+                                                                {activeTab === "skills" && (
                                 <motion.div
-                                variants={tabContentVariants}
-                                initial="hidden"
-                                animate="visible"
-                                exit="exit"
-                                className="bg-[#1A2333]/20 backdrop-blur-sm rounded-2xl p-8"
-                              >
-                                <motion.h3
-                                  initial={{ opacity: 0, y: -20 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  className="text-4xl font-bold mb-4"
+                                    variants={tabContentVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exit"
+                                    className="bg-[#1A2333]/20 backdrop-blur-sm rounded-2xl p-8"
                                 >
-                                  {skills.title}
-                                </motion.h3>
-                                <motion.p
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: 0.2 }}
-                                  className="text-white/60 mb-8"
-                                >
-                                  {skills.description}
-                                </motion.p>
-                              
-                                <div className="grid gap-8">
-                                  {Object.entries(groupedSkills).map(([category, skillsList], categoryIndex) => (
-                                    <motion.div
-                                      key={category}
-                                      initial={{ opacity: 0, y: 20 }}
-                                      animate={{ opacity: 1, y: 0 }}
-                                      transition={{ delay: categoryIndex * 0.1 }}
-                                      className="bg-[#232329]/30 backdrop-blur-sm rounded-xl p-6 border border-white/5"
+                                    <motion.h3
+                                        initial={{ opacity: 0, y: -20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        className="text-4xl font-bold mb-4"
                                     >
-                                      <h4 className="text-xl font-semibold mb-6 text-[#4ADE80] flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]"></div>
-                                        {category}
-                                      </h4>
-                                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                                        {skillsList.map((skill, index) => {
-                                          const IconComponent = skill.icon;
-                                          return (
+                                        {skills.title}
+                                    </motion.h3>
+                                    <motion.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ delay: 0.2 }}
+                                        className="text-white/60 mb-8"
+                                    >
+                                        {skills.description}
+                                    </motion.p>
+
+                                    <div className="grid gap-8">
+                                        {Object.entries(groupedSkills).map(([category, skillsList], categoryIndex) => (
                                             <motion.div
-                                              key={index}
-                                              variants={cardVariants}
-                                              initial="hidden"
-                                              animate="visible"
-                                              whileHover="hover"
-                                              custom={index}
-                                              className="group relative flex items-center gap-3 p-3 rounded-lg bg-[#1A2333]/40 border border-white/5 hover:border-[#4ADE80]/20 transition-all duration-300"
+                                                key={category}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: categoryIndex * 0.1 }}
+                                                className="bg-[#232329]/30 backdrop-blur-sm rounded-xl p-6 border border-white/5"
                                             >
-                                              <motion.div
-                                                variants={skillIconVariants}
-                                                whileHover="hover"
-                                                className="p-2 rounded-lg bg-[#4ADE80]/5 group-hover:bg-[#4ADE80]/10 transition-colors"
-                                              >
-                                                <IconComponent className="text-xl text-white/60 group-hover:text-[#4ADE80] transition-colors" />
-                                              </motion.div>
-                                              <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                                                {skill.name}
-                                              </span>
+                                                <h4 className="text-xl font-semibold mb-6 text-[#4ADE80] flex items-center gap-2">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#4ADE80]"></div>
+                                                    {category}
+                                                </h4>
+                                                
+                                                {/* Skills displayed as pills/badges */}
+                                                <div className="flex flex-wrap gap-3">
+                                                    {skillsList.map((skill, index) => {
+                                                        const IconComponent = skill.icon;
+                                                        return (
+                                                            <motion.div
+                                                                key={index}
+                                                                variants={cardVariants}
+                                                                initial="hidden"
+                                                                animate="visible"
+                                                                whileHover="hover"
+                                                                custom={index}
+                                                                onMouseEnter={() => setHoveredSkill(skill.name)}
+                                                                onMouseLeave={() => setHoveredSkill(null)}
+                                                                className="group inline-flex items-center gap-2 px-3 py-2 rounded-full bg-[#1A2333]/70 border border-white/5 hover:border-[#4ADE80]/20 hover:bg-[#1A2333] transition-all duration-300"
+                                                            >
+                                                                <motion.div
+                                                                    variants={skillIconVariants}
+                                                                    whileHover="hover"
+                                                                    className="text-white/60 group-hover:text-[#4ADE80] transition-colors"
+                                                                >
+                                                                    <IconComponent className="text-lg" />
+                                                                </motion.div>
+                                                                <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors whitespace-nowrap">
+                                                                    {skill.name}
+                                                                </span>
+                                                            </motion.div>
+                                                        );
+                                                    })}
+                                                </div>
                                             </motion.div>
-                                          );
-                                        })}
-                                      </div>
-                                    </motion.div>
-                                  ))}
-                                </div>
-                              </motion.div>
+                                        ))}
+                                    </div>
+                                </motion.div>
                             )}
 
                             {activeTab === "education" && (

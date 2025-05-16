@@ -1,0 +1,92 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A2333" />
+      <stop offset="100%" stop-color="#0F1525" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg-gradient)"/>
+  <rect x="50" y="50" width="700" height="300" rx="10" fill="#2A3343" stroke="#00FF99" stroke-width="2"/>
+  
+  <!-- Grid Pattern -->
+  <path d="M0,0 L800,400" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  <path d="M0,400 L800,0" stroke="#3A4353" stroke-width="0.5" stroke-opacity="0.2" />
+  
+  <!-- Pipeline Diagram -->
+  <!-- Commit Stage -->
+  <circle cx="150" cy="200" r="45" fill="#1A2333" stroke="#00FF99" stroke-width="2"/>
+  <circle cx="150" cy="200" r="40" fill="#2A3343" stroke="#00FF99" stroke-width="2"/>
+  <text x="150" y="190" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Commit</text>
+  <text x="150" y="210" font-family="Arial" font-size="10" fill="#00FF99" text-anchor="middle">Git</text>
+  
+  <!-- Git Icon -->
+  <path d="M140,175 L160,175 L160,165 L170,180 L160,195 L160,185 L140,185 L140,195 L130,180 L140,165 Z" fill="#00FF99" opacity="0.7" />
+  
+  <!-- Connection -->
+  <line x1="195" y1="200" x2="245" y2="200" stroke="#00FF99" stroke-width="2"/>
+  <circle cx="220" cy="200" r="5" fill="#00FF99" opacity="0.5" />
+  <polygon points="245,195 255,200 245,205" fill="#00FF99"/>
+  
+  <!-- Build Stage -->
+  <circle cx="300" cy="200" r="45" fill="#1A2333" stroke="#00FF99" stroke-width="2"/>
+  <circle cx="300" cy="200" r="40" fill="#2A3343" stroke="#00FF99" stroke-width="2"/>
+  <text x="300" y="190" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Build</text>
+  <text x="300" y="210" font-family="Arial" font-size="10" fill="#00FF99" text-anchor="middle">Jenkins</text>
+  
+  <!-- Build Icon -->
+  <rect x="285" y="170" width="30" height="10" rx="2" fill="#00FF99" opacity="0.7" />
+  <rect x="290" y="160" width="20" height="10" rx="2" fill="#00FF99" opacity="0.7" />
+  
+  <!-- Connection -->
+  <line x1="345" y1="200" x2="395" y2="200" stroke="#00FF99" stroke-width="2"/>
+  <circle cx="370" cy="200" r="5" fill="#00FF99" opacity="0.5" />
+  <polygon points="395,195 405,200 395,205" fill="#00FF99"/>
+  
+  <!-- Test Stage -->
+  <circle cx="450" cy="200" r="45" fill="#1A2333" stroke="#00FF99" stroke-width="2"/>
+  <circle cx="450" cy="200" r="40" fill="#2A3343" stroke="#00FF99" stroke-width="2"/>
+  <text x="450" y="190" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Test</text>
+  <text x="450" y="210" font-family="Arial" font-size="10" fill="#00FF99" text-anchor="middle">Automated</text>
+  
+  <!-- Test Icon -->
+  <path d="M440,170 L460,170 L455,180 L445,180 Z" fill="#00FF99" opacity="0.7" />
+  <rect x="445" y="180" width="10" height="5" fill="#00FF99" opacity="0.7" />
+  
+  <!-- Connection -->
+  <line x1="495" y1="200" x2="545" y2="200" stroke="#00FF99" stroke-width="2"/>
+  <circle cx="520" cy="200" r="5" fill="#00FF99" opacity="0.5" />
+  <polygon points="545,195 555,200 545,205" fill="#00FF99"/>
+  
+  <!-- Deploy Stage -->
+  <circle cx="600" cy="200" r="45" fill="#1A2333" stroke="#00FF99" stroke-width="2"/>
+  <circle cx="600" cy="200" r="40" fill="#2A3343" stroke="#00FF99" stroke-width="2"/>
+  <text x="600" y="190" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle" font-weight="bold">Deploy</text>
+  <text x="600" y="210" font-family="Arial" font-size="10" fill="#00FF99" text-anchor="middle">Kubernetes</text>
+  
+  <!-- Deploy Icon -->
+  <path d="M590,170 L610,170 L610,180 L600,185 L590,180 Z" fill="#00FF99" opacity="0.7" />
+  
+  <!-- Feedback Loop -->
+  <path d="M600,245 C500,300 250,300 150,245" fill="none" stroke="#00FF99" stroke-width="1.5" stroke-dasharray="5,3" />
+  <polygon points="155,250 150,245 155,240" fill="#00FF99"/>
+  
+  <!-- Glow Effects -->
+  <circle cx="150" cy="200" r="45" fill="none" stroke="#00FF99" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="300" cy="200" r="45" fill="none" stroke="#00FF99" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="450" cy="200" r="45" fill="none" stroke="#00FF99" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  <circle cx="600" cy="200" r="45" fill="none" stroke="#00FF99" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+  
+  <!-- Title with glow effect -->
+  <text x="400" y="100" font-family="Arial" font-size="28" fill="#FFFFFF" text-anchor="middle" font-weight="bold" filter="url(#glow)">CI/CD Pipeline Automation</text>
+  <text x="400" y="130" font-family="Arial" font-size="18" fill="#00FF99" text-anchor="middle">Building the Future of Software Delivery</text>
+  
+  <!-- Metrics -->
+  <text x="400" y="320" font-family="Arial" font-size="14" fill="#FFFFFF" text-anchor="middle">Deployment time: 3-4 hours → under 15 minutes</text>
+  <text x="400" y="340" font-family="Arial" font-size="14" fill="#00FF99" text-anchor="middle">99.5% Success Rate</text>
+</svg>

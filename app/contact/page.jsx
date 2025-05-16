@@ -67,6 +67,8 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
+      // Send the form data to your API
+      // This API should handle both storing the submission and sending the WhatsApp notification
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -76,7 +78,13 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        setNotification({ type: 'success', message: 'Message sent successfully!' });
+        // Show success notification to the user
+        setNotification({ 
+          type: 'success', 
+          message: 'Thank you! Your message has been sent successfully.' 
+        });
+        
+        // Reset form
         setFormData({
           firstName: "",
           lastName: "",
@@ -89,7 +97,10 @@ const Contact = () => {
         throw new Error('Failed to send message');
       }
     } catch (error) {
-      setNotification({ type: 'error', message: 'Failed to send message. Please try again.' });
+      setNotification({ 
+        type: 'error', 
+        message: 'Failed to send message. Please try again later.' 
+      });
     } finally {
       setIsLoading(false);
     }

@@ -25,7 +25,7 @@ const TerminalStats = () => {
         {/* Terminal Content */}
         <div className="p-4 space-y-3">
           {[
-            { icon: Zap, command: "experience.length", value: "2+ years", bgColor: "from-blue-500/10" },
+            { icon: Zap, command: "experience.length", value: "3+ years", bgColor: "from-blue-500/10" },
             { icon: Rocket, command: "projects.completed", value: "26", bgColor: "from-purple-500/10" },
             { icon: Code, command: "technologies.mastered", value: "8", bgColor: "from-green-500/10" },
             { icon: GitBranch, command: "git.commits", value: "500+", bgColor: "from-yellow-500/10" }

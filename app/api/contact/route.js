@@ -5,6 +5,7 @@ export async function POST(req) {
   try {
     const { firstName, lastName, email, phone, service, message } = await req.json();
 
+    // 1. Send emails (existing functionality)
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -13,10 +14,8 @@ export async function POST(req) {
       }
     });
 
-    // Modern, trendy auto-reply template
-    // Inside your API route, update the userEmailTemplate:
-
-const userEmailTemplate = `
+    // Modern, trendy auto-reply template (existing code)
+    const userEmailTemplate = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,7 +92,7 @@ const userEmailTemplate = `
 </html>
 `;
 
-    // Modern admin notification template
+    // Modern admin notification template (existing code)
     const adminEmailTemplate = `
       <!DOCTYPE html>
       <html>
@@ -164,6 +163,16 @@ const userEmailTemplate = `
       })
     ]);
 
+    // 2. Send Telegram notification
+    await sendTelegramNotification({
+      firstName,
+      lastName,
+      email,
+      phone,
+      service,
+      message
+    });
+
     return NextResponse.json({ message: 'Message sent successfully!' });
   } catch (error) {
     console.error('Contact form error:', error);
@@ -171,5 +180,58 @@ const userEmailTemplate = `
       { message: 'Failed to send message' },
       { status: 500 }
     );
+  }
+}
+
+// Function to send Telegram notification
+async function sendTelegramNotification(formData) {
+  try {
+    // Format the message for Telegram
+    const telegramMessage = `
+🔔 *New Contact Form Submission* 🔔
+
+*Name:* ${formData.firstName} ${formData.lastName}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone || 'Not provided'}
+*Service:* ${formData.service || 'Not specified'}
+
+*Message:*
+${formData.message}
+
+*Submitted:* ${new Date().toLocaleString()}
+`;
+
+    // Your Telegram bot details from environment variables
+    const botToken = process.env.TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.TELEGRAM_CHAT_ID;
+    
+    // Construct the API URL
+    const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    
+    // Make the API request
+    const response = await fetch(telegramApiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: telegramMessage,
+        parse_mode: 'Markdown',
+      }),
+    });
+    
+    const result = await response.json();
+    
+    if (!result.ok) {
+      throw new Error(`Telegram API error: ${result.description}`);
+    }
+    
+    console.log('Telegram notification sent successfully!');
+    return true;
+  } catch (error) {
+    console.error('Error sending Telegram notification:', error);
+    // Don't throw the error to avoid breaking the whole request
+    return false;
   }
 }

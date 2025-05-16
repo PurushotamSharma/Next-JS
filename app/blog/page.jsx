@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
-import Work from './Work';
+import BlogListing from './BlogListing';
 
 export default function Page() {
-  return <Work />;
+  return <BlogListing />;
 }
