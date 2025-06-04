@@ -77,17 +77,12 @@ const experience = {
         {
             company: "PieTech",
             position: "DevOps Engineer",
-            duration: "05/2024 - Present",
+            duration: "06/2024 - Present",
         },
         {
             company: "Credence Tech.",
             position: "DevOps Engineer",
-            duration: "11/2023 - 04/2025",
-        },
-        {
-            company: "Quodars",
-            position: "DevOps Engineer",
-            duration: "02/2023 - 11/2023",
+            duration: "11/2022 - 06/2025",
         },
         {
             company: "Upwork",
