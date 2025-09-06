@@ -3,6 +3,45 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+// Share buttons component for client-side functionality
+const ShareButtons = ({ title }) => {
+  const handleShare = (platform) => {
+    if (typeof window === 'undefined') return;
+    
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(title);
+    
+    let shareUrl = '';
+    
+    if (platform === 'twitter') {
+      shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    } else if (platform === 'linkedin') {
+      shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    }
+    
+    if (shareUrl) {
+      window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  return (
+    <div className="flex gap-3">
+      <button
+        onClick={() => handleShare('twitter')}
+        className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Twitter
+      </button>
+      <button
+        onClick={() => handleShare('linkedin')}
+        className="flex items-center gap-2 px-3 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors"
+      >
+        LinkedIn
+      </button>
+    </div>
+  );
+};
+
 const BlogPost = ({ data }) => {
   if (!data) {
     return (
@@ -106,24 +145,7 @@ const BlogPost = ({ data }) => {
             {/* Share Box */}
             <div className="bg-[#1A2333]/50 border border-accent/20 rounded-xl p-6">
               <h3 className="text-xl font-bold text-white mb-4">Share This Post</h3>
-              <div className="flex gap-3">
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(data.title)}&url=${encodeURIComponent(window.location.href)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Twitter
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </div>
+              <ShareButtons title={data.title} />
             </div>
           </div>
         </div>

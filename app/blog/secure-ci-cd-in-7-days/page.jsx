@@ -115,7 +115,7 @@ pipeline {
                 script {
                     def scannerHome = tool 'SonarQube Scanner'
                     withSonarQubeEnv('SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner"
+                        sh "\${scannerHome}/bin/sonar-scanner"
                     }
                 }
             }
@@ -124,8 +124,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    def image = docker.build("${IMAGE_NAME}:${BUILD_NUMBER}")
-                    docker.withRegistry("https://${DOCKER_REGISTRY}") {
+                    def image = docker.build("\${IMAGE_NAME}:\${BUILD_NUMBER}")
+                    docker.withRegistry("https://\${DOCKER_REGISTRY}") {
                         image.push()
                         image.push('latest')
                     }
@@ -137,7 +137,7 @@ pipeline {
             steps {
                 sh '''
                     kubectl set image deployment/app-staging \\
-                        app=${DOCKER_REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER} \\
+                        app=\${DOCKER_REGISTRY}/\${IMAGE_NAME}:\${BUILD_NUMBER} \\
                         --namespace=staging
                 '''
             }
@@ -158,7 +158,7 @@ pipeline {
         failure {
             slackSend(
                 color: 'danger',
-                message: "Build failed: ${env.JOB_NAME} - ${env.BUILD_NUMBER}"
+                message: "Build failed: \${env.JOB_NAME} - \${env.BUILD_NUMBER}"
             )
         }
     }
@@ -338,7 +338,7 @@ groups:
       severity: critical
     annotations:
       summary: "High error rate detected"
-      description: "Error rate is {{ $value }} errors per second"
+      description: "Error rate is {{ \\$value }} errors per second"
       
   - alert: HighMemoryUsage
     expr: container_memory_usage_bytes / container_spec_memory_limit_bytes > 0.8
