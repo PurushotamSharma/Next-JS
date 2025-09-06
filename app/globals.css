@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-primary bg-primary text-white leading-loose relative overflow-x-hidden;
+    @apply font-primary bg-primary text-white leading-relaxed relative overflow-x-hidden;
   }
 
   /* Typography */
@@ -35,7 +35,7 @@
     @apply rounded-full transition-all duration-300;
   }
   .btn-accent {
-    @apply bg-accent text-primary hover:bg-accent-hover px-6 py-3 btn;
+    @apply bg-accent text-primary hover:bg-accent/90 px-6 py-3 btn;
   }
   .btn-outline {
     @apply border border-accent text-accent hover:bg-accent hover:text-primary px-6 py-3 btn;
@@ -57,7 +57,11 @@
 
   /* Grid Background */
   .grid-bg {
-    @apply absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px];
+    @apply absolute inset-0;
+    background-image: 
+      linear-gradient(to right, rgba(128, 128, 128, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128, 128, 128, 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 
   /* Content Container */
