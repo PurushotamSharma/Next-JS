@@ -38,6 +38,7 @@
     "twilio": "^5.6.1"
   },
   "devDependencies": {
+    "@types/node": "24.3.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",

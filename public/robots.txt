@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://purushotam.devopsguy.in/sitemap.xml
+
+# Block crawling of API routes
+Disallow: /api/
+
+# Block crawling of private areas
+Disallow: /admin/
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
