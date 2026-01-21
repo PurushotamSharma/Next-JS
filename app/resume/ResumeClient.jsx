@@ -30,7 +30,7 @@ import {
 const about = {
     title: "About Me",
     description:
-        "I am a DevOps engineer with two years of experience in optimizing and automating software development processes. Skilled in CI/CD, IaC, and cloud services, I have successfully freelanced, delivering tailored solutions to enhance operational efficiency. Proficient with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform, I thrive in dynamic environments and am committed to continuous learning and improvement. My goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
+        "I am a DevOps engineer with over four years of experience in optimizing and automating software development processes. Skilled in CI/CD, IaC, and cloud services, I have successfully freelanced, delivering tailored solutions to enhance operational efficiency. Proficient with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform, I thrive in dynamic environments and am committed to continuous learning and improvement. My goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
     info: [
         {
             fieldName: "Name",
@@ -42,7 +42,7 @@ const about = {
         },
         {
             fieldName: "Experience",
-            fieldValue: "3+ Years",
+            fieldValue: "4+ Years",
         },
         {
             fieldName: "Skype",
@@ -72,7 +72,7 @@ const experience = {
     icon: "/assets/resume/badge.svg",
     title: "My Experience",
     description:
-        "I have worked as a DevOps engineer for three years plus, optimizing and automating software development processes. I have successfully delivered tailored solutions to enhance operational efficiency, working with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform. I have also freelanced, providing clients with CI/CD, IaC, and cloud services to meet their unique needs. I am committed to continuous learning and improvement, and my goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
+        "I have worked as a DevOps engineer for over four years, optimizing and automating software development processes. I have successfully delivered tailored solutions to enhance operational efficiency, working with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform. I have also freelanced, providing clients with CI/CD, IaC, and cloud services to meet their unique needs. I am committed to continuous learning and improvement, and my goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
     items: [
         {
             company: "PieTech",
@@ -96,7 +96,7 @@ const education = {
     icon: "/assets/resume/cap.svg",
     title: "My Education",
     description:
-        "I have worked as a DevOps engineer for two years, optimizing and automating software development processes. I have successfully delivered tailored solutions to enhance operational efficiency, working with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform. I have also freelanced, providing clients with CI/CD, IaC, and cloud services to meet their unique needs. I am committed to continuous learning and improvement, and my goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
+        "I have worked as a DevOps engineer for over four years, optimizing and automating software development processes. I have successfully delivered tailored solutions to enhance operational efficiency, working with tools like Docker, Kubernetes, Jenkins, AWS, and Terraform. I have also freelanced, providing clients with CI/CD, IaC, and cloud services to meet their unique needs. I am committed to continuous learning and improvement, and my goal is to bridge the gap between development and operations, fostering collaboration and innovation.",
     items: [
         {
             institution: "Charotar University",

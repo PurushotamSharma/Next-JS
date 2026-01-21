@@ -92,7 +92,7 @@ export default function RootLayout({ children }) {
               "name": "Purushotam Sharma",
               "url": "https://purushotam.devopsguy.in",
               "jobTitle": "Full Stack & DevOps Engineer",
-              "description": "DevOps Engineer with 3+ years experience in CI/CD, Docker, Kubernetes, AWS, GCP, Azure, and Infrastructure as Code.",
+              "description": "DevOps Engineer with 4+ years experience in CI/CD, Docker, Kubernetes, AWS, GCP, Azure, and Infrastructure as Code.",
               "email": "mailto:sharmapurushotam57@gmail.com",
               "telephone": "+91-7383055495",
               "address": {

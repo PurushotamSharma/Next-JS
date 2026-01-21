@@ -21,7 +21,7 @@ export default function HomeClient() {
       'help': 'Available commands: help, about, skills, experience, contact, clear',
       'about': 'I am a DevOps engineer passionate about automation and cloud infrastructure.',
       'skills': 'Docker, Kubernetes, AWS, Jenkins, Terraform, Git, CI/CD',
-      'experience': '3+ years of experience in DevOps and cloud technologies',
+      'experience': '4+ years of experience in DevOps and cloud technologies',
       'contact': 'Email: sharmapurushotam57@gmail.com | GitHub: @PurushotamSharma | Contact: 7383055495',
       'clear': 'CLEAR'
     };
@@ -118,7 +118,7 @@ purushotam 5678  1.5  0.8  4492428  138240  ??  S    9:30AM   0:10.32 ${searchTe
             </motion.div>
 
             <motion.div variants={animations.itemVariants} className="space-y-6">
-              <h1 className="text-7xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight break-words pr-2">
                 Hello, I'm{" "}
                 <motion.span 
                   className="text-accent block"

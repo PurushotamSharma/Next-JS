@@ -125,7 +125,7 @@ Added comprehensive JSON-LD schemas:
   "name": "Purushotam Sharma",
   "url": "https://purushotam.devopsguy.in",
   "jobTitle": "Full Stack & DevOps Engineer",
-  "description": "DevOps Engineer with 3+ years experience in CI/CD, Docker, Kubernetes, AWS, GCP, Azure, and Infrastructure as Code.",
+  "description": "DevOps Engineer with 4+ years experience in CI/CD, Docker, Kubernetes, AWS, GCP, Azure, and Infrastructure as Code.",
   "email": "mailto:sharmapurushotam57@gmail.com",
   "telephone": "+91-7383055495",
   "address": {
@@ -182,7 +182,7 @@ Added comprehensive JSON-LD schemas:
 ```javascript
 export const metadata = {
   title: "Home",
-  description: "Welcome to Purushotam's portfolio. Full Stack Developer & DevOps Engineer with 3+ years experience in CI/CD, Docker, Kubernetes, AWS, and cloud infrastructure automation.",
+  description: "Welcome to Purushotam's portfolio. Full Stack Developer & DevOps Engineer with 4+ years experience in CI/CD, Docker, Kubernetes, AWS, and cloud infrastructure automation.",
   openGraph: {
     title: 'Purushotam | Full Stack & DevOps Engineer - Home',
     description: 'Welcome to my portfolio. Specializing in DevOps automation, cloud infrastructure, and full-stack development.',
@@ -208,7 +208,7 @@ export const metadata = {
   description: "Purushotam's professional experience, education, and technical skills. DevOps Engineer with expertise in CI/CD, Docker, Kubernetes, AWS, GCP, Azure, and Infrastructure as Code.",
   openGraph: {
     title: 'Resume & Skills | Purushotam - DevOps Engineer',
-    description: '3+ years experience in DevOps, cloud technologies, and full-stack development. View my professional background and technical expertise.',
+    description: '4+ years experience in DevOps, cloud technologies, and full-stack development. View my professional background and technical expertise.',
     url: 'https://purushotam.devopsguy.in/resume',
   },
   alternates: {

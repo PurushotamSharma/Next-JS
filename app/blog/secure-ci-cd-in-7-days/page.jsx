@@ -391,7 +391,7 @@ Ready to implement this in your startup? I offer consulting services to guide yo
 
 ---
 
-**About the Author**: Purushotam Sharma is a DevOps engineer with 3+ years of experience helping startups scale their infrastructure. He specializes in CI/CD, Kubernetes, and cloud-native technologies.
+**About the Author**: Purushotam Sharma is a DevOps engineer with 4+ years of experience helping startups scale their infrastructure. He specializes in CI/CD, Kubernetes, and cloud-native technologies.
   `,
   coverImage: '/assets/work/cicd-pipeline.svg',
   date: '2024-01-15',

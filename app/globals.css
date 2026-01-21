@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply overflow-x-hidden;
+  }
+
   body {
     @apply font-primary bg-primary text-white leading-relaxed relative overflow-x-hidden;
   }
