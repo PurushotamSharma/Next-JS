@@ -3,6 +3,8 @@ import React from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import BlogPost from './BlogPost';
 
+export const runtime = 'edge';
+
 export default function Page() {
   const router = useRouter();
   const params = useParams();

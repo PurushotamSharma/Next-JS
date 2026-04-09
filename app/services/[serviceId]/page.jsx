@@ -17,6 +17,8 @@ import {
 import Link from "next/link";
 import { services } from '@/lib/services-data';
 
+export const runtime = 'edge';
+
 // Testimonial Card Component
 const TestimonialCard = ({ testimonial }) => (
   <div className="flex-none w-full md:w-[400px] p-6 rounded-2xl backdrop-blur-sm bg-[#1A2333]/20 border border-white/10 hover:border-[#4ADE80]/20 transition-colors duration-300">

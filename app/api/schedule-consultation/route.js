@@ -4,6 +4,8 @@ import { Resend } from 'resend';
 import { google } from 'googleapis';
 import axios from 'axios';
 
+export const runtime = 'edge';
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Function to generate Zoom JWT token
