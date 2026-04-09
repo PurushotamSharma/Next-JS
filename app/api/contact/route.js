@@ -1,20 +1,20 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 export const runtime = 'edge';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const RESEND_FROM =
+  process.env.RESEND_FROM || 'purushotam@devopsguy.in';
+
+/** Inbox for admin copy (was Gmail EMAIL_USER). Set in Cloudflare env. */
+const CONTACT_NOTIFY_EMAIL =
+  process.env.CONTACT_NOTIFY_EMAIL || process.env.EMAIL_USER;
 
 export async function POST(req) {
   try {
     const { firstName, lastName, email, phone, service, message } = await req.json();
-
-    // 1. Send emails (existing functionality)
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
 
     // Modern, trendy auto-reply template (existing code)
     const userEmailTemplate = `
@@ -149,21 +149,29 @@ export async function POST(req) {
       </html>
     `;
 
-    // Send emails
-    await Promise.all([
-      transporter.sendMail({
-        from: `"Purushotam Sharma" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_USER,
-        subject: `New Contact Form Submission from ${firstName} ${lastName}`,
-        html: adminEmailTemplate
-      }),
-      transporter.sendMail({
-        from: `"Purushotam Sharma" <${process.env.EMAIL_USER}>`,
+    const from = `Purushotam Sharma <${RESEND_FROM}>`;
+
+    const emailTasks = [
+      resend.emails.send({
+        from,
         to: email,
         subject: 'Thank you for contacting Purushotam Sharma',
-        html: userEmailTemplate
-      })
-    ]);
+        html: userEmailTemplate,
+      }),
+    ];
+
+    if (CONTACT_NOTIFY_EMAIL) {
+      emailTasks.push(
+        resend.emails.send({
+          from,
+          to: CONTACT_NOTIFY_EMAIL,
+          subject: `New Contact Form Submission from ${firstName} ${lastName}`,
+          html: adminEmailTemplate,
+        })
+      );
+    }
+
+    await Promise.all(emailTasks);
 
     // 2. Send Telegram notification
     await sendTelegramNotification({
