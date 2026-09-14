@@ -1,17 +1,12 @@
-import BlogClient from './BlogClient';
+import BlogClient from "./BlogClient";
+import { buildMetadata } from "@/lib/seo";
+import { person } from "@/lib/person";
 
-export const metadata = {
-  title: "Blog & Case Studies",
-  description: "Read detailed case studies and technical articles about DevOps implementations, cloud migrations, CI/CD pipelines, and infrastructure automation by Purushotam.",
-  openGraph: {
-    title: 'Blog & Case Studies | Purushotam - DevOps Engineer',
-    description: 'In-depth technical articles and real-world DevOps case studies covering CI/CD, cloud infrastructure, and automation.',
-    url: 'https://purushotam.devopsguy.in/blog',
-  },
-  alternates: {
-    canonical: 'https://purushotam.devopsguy.in/blog',
-  },
-};
+export const metadata = buildMetadata({
+  title: "Case studies",
+  description: `Technical case studies by ${person.name} on CI/CD, cloud infrastructure, and DevOps — supporting a Technical Product Manager background.`,
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return <BlogClient />;

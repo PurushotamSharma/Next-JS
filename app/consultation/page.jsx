@@ -1,17 +1,12 @@
-import ConsultationClient from './ConsultationClient';
+import ConsultationClient from "./ConsultationClient";
+import { buildMetadata } from "@/lib/seo";
+import { person } from "@/lib/person";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "Schedule Consultation",
-  description: "Book a free 30-minute consultation with Purushotam to discuss your DevOps needs, cloud migration, CI/CD implementation, or development projects.",
-  openGraph: {
-    title: 'Schedule Consultation | Purushotam - DevOps Expert',
-    description: 'Free 30-minute consultation available. Discuss your infrastructure needs and development requirements with an experienced DevOps engineer.',
-    url: 'https://purushotam.devopsguy.in/consultation',
-  },
-  alternates: {
-    canonical: 'https://purushotam.devopsguy.in/consultation',
-  },
-};
+  description: `Book a consultation with ${person.name}, Technical Product Manager — product strategy, SaaS, PRDs, or engineering collaboration.`,
+  path: "/consultation",
+});
 
 export default function ConsultationPage() {
   return <ConsultationClient />;

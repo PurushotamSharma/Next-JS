@@ -1,245 +1,365 @@
 "use client";
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Download, Github, Linkedin, Twitter } from "lucide-react";
-import TerminalStats from "@/components/TerminalStats";
-import { useState, useEffect } from 'react';
+import { ArrowRight } from "lucide-react";
+import { person, getFeaturedProductProjects } from "@/lib/person";
+import { Container, Section, Eyebrow } from "@/components/Section";
+
+const fade = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0 },
+};
 
 export default function HomeClient() {
-  const [command, setCommand] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
-  const [output, setOutput] = useState([]);
-
-  // Social media links from your previous component
-  const socialLinks = [
-    { Icon: Github, url: "https://github.com/PurushotamSharma" },
-    { Icon: Linkedin, url: "https://www.linkedin.com/in/purushotamsharma/" },
-    { Icon: Twitter, url: "https://twitter.com/iampurushotamps" }
-  ];
-
-  const processCommand = (input) => {
-    const commands = {
-      'help': 'Available commands: help, about, skills, experience, contact, clear',
-      'about': 'I am a DevOps engineer passionate about automation and cloud infrastructure.',
-      'skills': 'Docker, Kubernetes, AWS, Jenkins, Terraform, Git, CI/CD',
-      'experience': '4+ years of experience in DevOps and cloud technologies',
-      'contact': 'Email: sharmapurushotam57@gmail.com | GitHub: @PurushotamSharma | Contact: 7383055495',
-      'clear': 'CLEAR'
-    };
-
-    if (input.startsWith('ps aux | grep')) {
-      const searchTerm = input.replace('ps aux | grep', '').trim();
-      return `Searching for processes matching "${searchTerm}"...
-USER       PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
-purushotam 1234  2.0  1.0  5592824  166496  ??  S    9:00AM   0:15.94 ${searchTerm}
-purushotam 5678  1.5  0.8  4492428  138240  ??  S    9:30AM   0:10.32 ${searchTerm}-worker`;
-    }
-
-    return commands[input.toLowerCase()] || `Command not found: ${input}. Type 'help' for available commands.`;
-  };
-
-  const handleSubmit = () => {
-    if (command.trim()) {
-      const response = processCommand(command);
-      if (response === 'CLEAR') {
-        setOutput([]);
-      } else {
-        setOutput([...output, { command, response }]);
-      }
-      setCommand('');
-    }
-  };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 500);
-    return () => clearInterval(interval);
-  }, []);
-
-  const animations = {
-    containerVariants: {
-      hidden: { opacity: 0 },
-      show: {
-        opacity: 1,
-        transition: {
-          staggerChildren: 0.1,
-          delayChildren: 0.3
-        }
-      }
-    },
-    itemVariants: {
-      hidden: { opacity: 0, y: 20 },
-      show: { opacity: 1, y: 0 }
-    }
-  };
+  const productProjects = getFeaturedProductProjects();
+  const sellmato = productProjects.find((p) => p.id === "sellmato");
+  const otherProducts = productProjects.filter((p) => p.id !== "sellmato");
 
   return (
-    <div className="min-h-screen bg-primary relative">
-      {/* Background Effects */}
-      <div className="fixed inset-0 pointer-events-none">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(0,255,153,0.15),transparent_50%)]" 
-        />
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 0.2 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(0,255,153,0.15),transparent_50%)]" 
-        />
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" 
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="container pt-40">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          {/* Left Content */}
-          <motion.div
-            variants={animations.containerVariants}
-            initial="hidden"
-            animate="show"
-            className="space-y-10"
-          >
-            <motion.div 
-              variants={animations.itemVariants}
-              whileHover={{ scale: 1.05, x: 10 }}
-              className="inline-flex items-center gap-3 px-6 py-3 bg-[#1A2333]/50 rounded-full border border-accent/20 group cursor-pointer"
+    <div className="min-h-screen relative">
+      {/* HERO */}
+      <section className="relative pt-36 pb-20 md:pt-44 md:pb-28">
+        <Container>
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-14 items-center">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              transition={{ staggerChildren: 0.08 }}
+              className="space-y-7"
             >
-              <span className="text-accent text-lg group-hover:tracking-wider transition-all duration-300">
-                DevOps Engineer
-              </span>
-            </motion.div>
-
-            <motion.div variants={animations.itemVariants} className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight break-words pr-2">
-                Hello, I'm{" "}
-                <motion.span 
-                  className="text-accent block"
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  Purushotam Sharma
-                </motion.span>
-              </h1>
-
-              {/* Interactive Terminal */}
-              <motion.div 
-                variants={animations.itemVariants}
-                whileHover={{ scale: 1.02 }}
-                className="bg-[#1A2333]/50 rounded-lg p-6 font-mono text-lg relative group overflow-hidden"
+              <motion.h1
+                variants={fade}
+                className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05]"
               >
-                <div className="relative space-y-2">
-                  {output.map((item, index) => (
-                    <div key={index} className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-accent">❯</span>
-                        <span>{item.command}</span>
-                      </div>
-                      <div className="text-gray-400 whitespace-pre-line pl-6">
-                        {item.response}
-                      </div>
-                    </div>
-                  ))}
-                  <div className="flex items-center gap-2">
-                    <span className="text-accent">❯</span>
-                    <input
-                      type="text"
-                      value={command}
-                      onChange={(e) => setCommand(e.target.value)}
-                      onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
-                      className="bg-transparent outline-none flex-1 text-white font-mono"
-                      placeholder="Type a command (try 'help')..."
-                      spellCheck="false"
-                      aria-label="Terminal command input"
-                    />
-                    <span 
-                      className={`w-2 h-5 bg-accent transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
-                    />
-                  </div>
-                </div>
-              </motion.div>
+                {person.name}
+              </motion.h1>
 
-              <motion.p 
-                variants={animations.itemVariants}
-                className="text-gray-400 text-xl leading-relaxed hover:text-gray-300 transition-colors duration-300"
-              >
-                A passionate DevOps engineer specializing in CI/CD pipelines,
-                cloud infrastructure, and automation. Building robust systems
-                that scale.
+              <motion.p variants={fade} className="text-xl md:text-2xl text-accent font-medium">
+                {person.title}
               </motion.p>
-            </motion.div>
 
-            <motion.div 
-              variants={animations.itemVariants}
-              className="flex items-center gap-6"
-            >
-              <motion.a
-                href="/assets/PurushotamSharma.pdf"
-                download
-                whileHover={{ scale: 1.05, x: 10 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 bg-accent text-primary px-8 py-4 rounded-full text-lg group relative overflow-hidden"
+              <motion.p variants={fade} className="text-lg md:text-xl text-white/75">
+                {person.tagline}
+              </motion.p>
+
+              <motion.p
+                variants={fade}
+                className="text-base md:text-lg text-white/55 max-w-2xl leading-relaxed"
               >
-                <motion.span 
-                  className="relative flex items-center gap-3"
-                  whileHover={{ scale: 1.05 }}
+                {person.supportingStatement}
+              </motion.p>
+
+              <motion.p variants={fade} className="text-sm text-white/45">
+                Currently working with{" "}
+                <span className="text-white/80">{person.currentRole.company}</span>
+              </motion.p>
+
+              <motion.div variants={fade} className="flex flex-wrap gap-4 pt-1">
+                <Link
+                  href="/projects/sellmato"
+                  className="inline-flex items-center gap-2 bg-accent text-primary px-6 py-3 rounded-full font-medium hover:bg-accent-hover transition-colors"
                 >
-                  <Download 
-                    size={24}
-                    className="group-hover:rotate-12 transition-transform duration-300" 
-                  />
-                  <span className="group-hover:tracking-wider transition-all duration-300">
-                    Download CV
-                  </span>
-                </motion.span>
-              </motion.a>
-
-              <div className="flex gap-5">
-                {socialLinks.map((social, i) => (
-                  <motion.a
-                    key={i}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variants={animations.itemVariants}
-                    whileHover={{ 
-                      scale: 1.1, 
-                      rotate: 5,
-                      boxShadow: "0 0 20px rgba(0, 255, 153, 0.2)"
-                    }}
-                    className="p-4 rounded-full border border-accent/20 text-accent hover:bg-accent/10 transition-colors duration-300 relative group"
-                    aria-label={`Visit my ${social.Icon.name} profile`}
-                  >
-                    <motion.div 
-                      className="absolute inset-0 bg-accent/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    />
-                    <social.Icon 
-                      size={24}
-                      className="group-hover:rotate-12 transition-transform duration-300" 
-                    />
-                  </motion.a>
-                ))}
-              </div>
+                  View Product Work
+                  <ArrowRight size={18} />
+                </Link>
+                <Link
+                  href="/experience"
+                  className="inline-flex items-center gap-2 border border-white/15 text-white px-6 py-3 rounded-full hover:border-accent/50 hover:text-accent transition-colors"
+                >
+                  View Experience
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
 
-          {/* Terminal Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative mx-auto w-full max-w-md"
+            >
+              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#1A2333]/40">
+                <Image
+                  src={person.imagePath}
+                  alt={`${person.name}, ${person.title}`}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 768px) 90vw, 400px"
+                />
+              </div>
+              <p className="mt-4 text-sm text-white/45 text-center">
+                {person.currentRole.title} · {person.currentRole.company}
+              </p>
+            </motion.div>
+          </div>
+        </Container>
+      </section>
+
+      {/* SNAPSHOT */}
+      <Section className="border-t border-white/5 !py-14">
+        <Container>
+          <Eyebrow>Professional snapshot</Eyebrow>
+          <div className="grid md:grid-cols-2 gap-10">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-3">Current role</h2>
+              <p className="text-lg text-white/90">
+                {person.currentRole.title}
+              </p>
+              <p className="text-white/55 mt-1">
+                Currently working with {person.currentRole.company}
+              </p>
+              <p className="text-sm text-white/35 mt-2">{person.currentRole.period}</p>
+            </div>
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-4">Focus</h2>
+              <ul className="flex flex-wrap gap-2">
+                {person.focusAreas.map((item) => (
+                  <li
+                    key={item}
+                    className="text-sm text-white/70 border border-white/10 px-3 py-1.5 rounded-md"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* DIFFERENTIATOR */}
+      <Section>
+        <Container>
+          <Eyebrow>The differentiator</Eyebrow>
+          <h2 className="text-3xl md:text-4xl font-semibold max-w-3xl leading-tight mb-6">
+            Why a DevOps background makes a stronger Technical Product Manager
+          </h2>
+          <p className="text-white/60 max-w-3xl leading-relaxed mb-12">
+            {person.skills.differentiator}
+          </p>
+
+          <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-6 md:gap-4 items-start">
+            <div className="border-t border-accent/40 pt-6">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-accent mb-4">Product</h3>
+              <ul className="space-y-2 text-white/70">
+                {person.skills.product.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="hidden md:flex items-center justify-center pt-10 text-2xl text-white/25" aria-hidden="true">
+              +
+            </div>
+            <div className="border-t border-white/20 pt-6">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-white/50 mb-4">Engineering</h3>
+              <ul className="space-y-2 text-white/70">
+                {person.skills.engineering.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="hidden md:flex items-center justify-center pt-10 text-2xl text-white/25" aria-hidden="true">
+              =
+            </div>
+            <div className="border-t border-accent pt-6 md:col-span-1">
+              <h3 className="text-sm tracking-[0.2em] uppercase text-accent mb-4">Result</h3>
+              <p className="text-xl font-semibold leading-snug">
+                Technical Product Management
+              </p>
+              <p className="text-sm text-white/50 mt-3 leading-relaxed">
+                I can translate business needs into product requirements and technical
+                decisions without losing either side.
+              </p>
+            </div>
+          </div>
+
+          {/* Mobile equation labels */}
+          <p className="md:hidden mt-8 text-center text-sm text-white/40">
+            Product + Engineering = Technical Product Management
+          </p>
+        </Container>
+      </Section>
+
+      {/* HOW I BUILD PRODUCTS */}
+      <Section className="bg-white/[0.02]">
+        <Container>
+          <Eyebrow>How I build products</Eyebrow>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-10">A practical loop</h2>
+          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {person.productMethodology.map((item, index) => (
+              <li key={item.step} className="border border-white/10 rounded-xl p-5 bg-[#1A2333]/25">
+                <p className="text-xs text-accent mb-2">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="font-semibold mb-2">{item.step}</h3>
+                <p className="text-sm text-white/55 leading-relaxed">{item.body}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-8">
+            <Link href="/product" className="text-accent hover:underline inline-flex items-center gap-1">
+              Full product approach <ArrowRight size={16} />
+            </Link>
+          </p>
+        </Container>
+      </Section>
+
+      {/* FEATURED: SELLMATO FIRST */}
+      <Section>
+        <Container>
+          <Eyebrow>Featured product work</Eyebrow>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8">SellMato</h2>
+          {sellmato ? (
+            <Link
+              href={sellmato.href}
+              className="group block border border-accent/30 rounded-2xl p-6 md:p-10 bg-[#1A2333]/40 hover:border-accent/60 transition-colors mb-10"
+            >
+              <div className="flex flex-wrap items-center gap-3 mb-4">
+                <span className="text-xs uppercase tracking-wider text-accent border border-accent/30 px-2 py-0.5 rounded">
+                  Primary case study
+                </span>
+                <span className="text-sm text-white/45">{sellmato.role}</span>
+              </div>
+              <p className="text-lg text-white/70 leading-relaxed max-w-3xl mb-6">
+                {sellmato.summary}
+              </p>
+              <span className="inline-flex items-center gap-2 text-accent">
+                Read SellMato case study
+                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+              </span>
+            </Link>
+          ) : null}
+
+          <div className="flex items-end justify-between gap-4 mb-6 flex-wrap">
+            <h3 className="text-xl font-semibold text-white/80">More product work</h3>
+            <Link href="/projects" className="text-accent hover:underline inline-flex items-center gap-1 text-sm">
+              All projects <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {otherProducts.map((project) => (
+              <Link
+                key={project.id}
+                href={project.href}
+                className="group border border-white/10 rounded-xl p-5 hover:border-accent/40 transition-colors bg-[#1A2333]/25"
+              >
+                <h3 className="text-lg font-semibold group-hover:text-accent transition-colors mb-2">
+                  {project.name}
+                </h3>
+                <p className="text-xs text-white/40 mb-2">{project.role}</p>
+                <p className="text-sm text-white/55 leading-relaxed line-clamp-3">
+                  {project.summary}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* ENGINEERING — BELOW PRODUCT NARRATIVE */}
+      <Section className="border-t border-white/5">
+        <Container>
+          <Eyebrow>Engineering background</Eyebrow>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4 max-w-3xl">
+            {person.skills.engineeringMessage}
+          </h2>
+          <p className="text-white/55 max-w-2xl mb-8 leading-relaxed">
+            DevOps and cloud experience is the foundation under my product work — not the
+            headline. It helps me judge feasibility, talk clearly with engineering, and avoid
+            requirements that look good on paper but break in production.
+          </p>
+          <ul className="flex flex-wrap gap-2 mb-8">
+            {person.skills.engineering.map((tech) => (
+              <li
+                key={tech}
+                className="text-sm border border-white/10 text-white/70 px-3 py-1.5 rounded-md"
+              >
+                {tech}
+              </li>
+            ))}
+          </ul>
+          <Link
+            href="/engineering"
+            className="text-accent hover:underline inline-flex items-center gap-1"
           >
-            <TerminalStats />
-          </motion.div>
-        </div>
-      </div>
+            Technical background <ArrowRight size={16} />
+          </Link>
+        </Container>
+      </Section>
+
+      {/* WRITING */}
+      <Section className="bg-white/[0.02]">
+        <Container>
+          <Eyebrow>Selected writing</Eyebrow>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+            Technical writing on DevOps & cloud
+          </h2>
+          <p className="text-white/55 max-w-2xl mb-6 leading-relaxed">
+            {person.writing.summary}
+          </p>
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/writing"
+              className="inline-flex items-center gap-2 border border-white/15 px-5 py-2.5 rounded-full hover:border-accent/50 hover:text-accent transition-colors"
+            >
+              On this site
+            </Link>
+            <a
+              href={person.profiles.find((p) => p.id === "hashnode")?.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-white/15 px-5 py-2.5 rounded-full hover:border-accent/50 hover:text-accent transition-colors"
+            >
+              Hashnode
+            </a>
+          </div>
+        </Container>
+      </Section>
+
+      {/* ABOUT + LINKS */}
+      <Section>
+        <Container>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <Eyebrow>About</Eyebrow>
+              <h2 className="text-3xl font-semibold mb-4">The short version</h2>
+              <p className="text-white/60 leading-relaxed mb-6">
+                Technical Product Manager at {person.currentRole.company}. Based in{" "}
+                {person.location.label}. I bridge business, product strategy, and engineering
+                delivery.
+              </p>
+              <Link href="/about" className="text-accent hover:underline inline-flex items-center gap-1">
+                Full story <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div>
+              <Eyebrow>Professional links</Eyebrow>
+              <ul className="space-y-3 mb-8">
+                {person.profiles.map((p) => (
+                    <li key={p.id}>
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-white/70 hover:text-accent transition-colors"
+                      >
+                        {p.label}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-accent text-primary px-6 py-3 rounded-full font-medium hover:bg-accent-hover transition-colors"
+              >
+                Contact
+                <ArrowRight size={18} />
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </Section>
     </div>
   );
 }

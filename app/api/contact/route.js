@@ -57,7 +57,7 @@ export async function POST(req) {
         </div>
       </a>
 
-      <a href="https://github.com/purushotamSharma" style="display: block; background: rgba(0, 255, 153, 0.1); border-left: 4px solid #00ff99; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
+      <a href="https://github.com/PurushotamSharma" style="display: block; background: rgba(0, 255, 153, 0.1); border-left: 4px solid #00ff99; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
         <div style="display: flex; align-items: center;">
           <span style="font-size: 24px; margin-right: 15px;">💻</span>
           <div>
@@ -73,7 +73,7 @@ export async function POST(req) {
       <div style="margin-bottom: 25px;">
         <p style="color: #fff; margin: 0 0 5px 0; font-size: 16px;">Best regards,</p>
         <h2 style="color: #00ff99; margin: 0 0 5px 0; font-size: 24px; font-weight: 600;">Purushotam Sharma</h2>
-        <p style="color: #94a3b8; margin: 0; font-size: 16px;">DevOps Engineer</p>
+        <p style="color: #94a3b8; margin: 0; font-size: 16px;">Technical Product Manager</p>
       </div>
 
       <!-- Social Links -->
@@ -84,7 +84,7 @@ export async function POST(req) {
         <a href="https://www.linkedin.com/in/purushotamsharma/" style="color: #00ff99; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(0, 255, 153, 0.1);">
           👥 LinkedIn
         </a>
-        <a href="https://github.com/purushotamSharma" style="color: #00ff99; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(0, 255, 153, 0.1);">
+        <a href="https://github.com/PurushotamSharma" style="color: #00ff99; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(0, 255, 153, 0.1);">
           💻 GitHub
         </a>
       </div>

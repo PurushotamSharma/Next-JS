@@ -1,65 +1,78 @@
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
+import JsonLd from "@/components/JsonLd";
+import { person, SITE_URL } from "@/lib/person";
+import { getPersonJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ["latin"], 
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-  variable: '--font-jetbrainsMono'
+  variable: "--font-jetbrainsMono",
 });
 
 export const metadata = {
-  metadataBase: new URL('https://purushotam.devopsguy.in'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Purushotam | Full Stack & DevOps Engineer",
-    template: "%s | Purushotam"
+    default: `${person.name} | ${person.title}`,
+    template: `%s | ${person.name}`,
   },
-  description: "Portfolio of Purushotam — Full Stack Developer & DevOps Engineer specializing in CI/CD, Docker, Kubernetes, AWS, GCP, Azure, and Infrastructure as Code.",
-  keywords: ["Full Stack Developer", "DevOps Engineer", "CI/CD", "Docker", "Kubernetes", "AWS", "GCP", "Azure", "Cloud Deployment", "Infrastructure as Code", "Terraform", "Jenkins", "React", "Node.js", "Python"],
-  authors: [{ name: "Purushotam Sharma" }],
-  creator: "Purushotam Sharma",
-  publisher: "Purushotam Sharma",
+  description: person.shortDescription,
+  keywords: [
+    "Technical Product Manager",
+    "Product Strategy",
+    "SaaS",
+    "PRDs",
+    "Roadmapping",
+    "DevOps",
+    "Cloud Infrastructure",
+    "AWS",
+    "Kubernetes",
+    "CI/CD",
+    "Purushotam Sharma",
+  ],
+  authors: [{ name: person.name, url: SITE_URL }],
+  creator: person.name,
+  publisher: person.name,
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://purushotam.devopsguy.in',
-    siteName: 'Purushotam | Full Stack & DevOps Engineer',
-    title: 'Purushotam | Full Stack & DevOps Engineer',
-    description: 'Portfolio of Purushotam — Full Stack + DevOps (CI/CD, Docker, Kubernetes, AWS/GCP/Azure).',
+    type: "website",
+    locale: "en_US",
+    url: SITE_URL,
+    siteName: `${person.name} | ${person.title}`,
+    title: `${person.name} | ${person.title}`,
+    description: person.shortDescription,
     images: [
       {
-        url: '/og-cover.jpg',
+        url: "/og-cover.jpg",
         width: 1200,
         height: 630,
-        alt: 'Purushotam - Full Stack & DevOps Engineer',
+        alt: `${person.name} — ${person.title}`,
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Purushotam | Full Stack & DevOps Engineer',
-    description: 'CI/CD, Containers, Cloud, Infra as Code.',
-    images: ['/og-cover.jpg'],
-    creator: '@iampurushotamps',
-  },
-  verification: {
-    google: 'PASTE_TOKEN_HERE',
+    card: "summary_large_image",
+    title: `${person.name} | ${person.title}`,
+    description: person.shortDescription,
+    images: ["/og-cover.jpg"],
+    creator: "@iampurushotamps",
   },
   alternates: {
-    canonical: 'https://purushotam.devopsguy.in',
+    canonical: SITE_URL,
   },
 };
 
@@ -67,93 +80,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "url": "https://purushotam.devopsguy.in",
-              "name": "Purushotam | Full Stack & DevOps Engineer",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://purushotam.devopsguy.in/blog?q={query}",
-                "query-input": "required name=query"
-              }
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Purushotam Sharma",
-              "url": "https://purushotam.devopsguy.in",
-              "jobTitle": "Full Stack & DevOps Engineer",
-              "description": "DevOps Engineer with 4+ years experience in CI/CD, Docker, Kubernetes, AWS, GCP, Azure, and Infrastructure as Code.",
-              "email": "mailto:sharmapurushotam57@gmail.com",
-              "telephone": "+91-7383055495",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Surat",
-                "addressRegion": "Gujarat",
-                "addressCountry": "India"
-              },
-              "alumniOf": [
-                {
-                  "@type": "EducationalOrganization",
-                  "name": "Charotar University",
-                  "degree": "Master of Computer Application"
-                },
-                {
-                  "@type": "EducationalOrganization", 
-                  "name": "MDSU University",
-                  "degree": "Bachelor of Science"
-                }
-              ],
-              "worksFor": [
-                {
-                  "@type": "Organization",
-                  "name": "PieTech",
-                  "startDate": "2024-06"
-                },
-                {
-                  "@type": "Organization", 
-                  "name": "Upwork",
-                  "description": "Freelancer",
-                  "startDate": "2022"
-                }
-              ],
-              "knowsAbout": [
-                "DevOps",
-                "CI/CD",
-                "Docker",
-                "Kubernetes", 
-                "AWS",
-                "GCP",
-                "Azure",
-                "Infrastructure as Code",
-                "Terraform",
-                "Jenkins",
-                "Full Stack Development",
-                "React",
-                "Node.js",
-                "Python"
-              ],
-              "sameAs": [
-                "https://github.com/PurushotamSharma",
-                "https://www.linkedin.com/in/purushotamsharma/",
-                "https://twitter.com/iampurushotamps"
-              ]
-            })
-          }}
-        />
+        <JsonLd data={[getWebsiteJsonLd(), getPersonJsonLd()]} />
       </head>
       <body className={jetbrainsMono.variable}>
-        {/* Background Gradient & Grid */}
-        <div className="fixed inset-0 pointer-events-none">
+        <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
           <div className="gradient-overlay" />
           <div className="grid-bg" />
         </div>
@@ -161,7 +91,8 @@ export default function RootLayout({ children }) {
         <Header />
         <StairTransition />
         <PageTransition>
-          {children}
+          <main id="main-content">{children}</main>
+          <Footer />
         </PageTransition>
       </body>
     </html>

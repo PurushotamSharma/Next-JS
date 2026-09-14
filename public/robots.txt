@@ -4,11 +4,8 @@ Allow: /
 # Sitemap
 Sitemap: https://purushotam.devopsguy.in/sitemap.xml
 
-# Block crawling of API routes
+# Block crawling of API routes and private areas
 Disallow: /api/
-
-# Block crawling of private areas
 Disallow: /admin/
 
-# Crawl-delay for respectful crawling
 Crawl-delay: 1

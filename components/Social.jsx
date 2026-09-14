@@ -1,22 +1,35 @@
 import Link from "next/link";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
+import { person } from "@/lib/person";
 
-const socials = [
-    { icon: <FaGithub />, path: "https://github.com/PurushotamSharma" },
-    { icon: <FaLinkedin />, path: "https://www.linkedin.com/in/purushotamsharma/" },
-    { icon: <FaTwitter />, path: "https://twitter.com/Purushotam_0" }
-];
+const iconMap = {
+  github: <FaGithub />,
+  linkedin: <FaLinkedin />,
+  x: <FaTwitter />,
+  instagram: <FaInstagram />,
+};
 
 const Social = ({ containerStyles, iconStyles }) => {
-    return (
-        <div className={containerStyles}>
-            {socials.map((item, index) => {
-                return (<Link key={index} href={item.path} className={iconStyles}>{item.icon}</Link>
+  const socials = person.profiles.filter((p) =>
+    ["github", "linkedin", "x", "instagram"].includes(p.id)
+  );
 
-                );
-            })}
-        </div>
-    );
-}
+  return (
+    <div className={containerStyles}>
+      {socials.map((item) => (
+        <Link
+          key={item.id}
+          href={item.url}
+          className={iconStyles}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={item.label}
+        >
+          {iconMap[item.id]}
+        </Link>
+      ))}
+    </div>
+  );
+};
 
 export default Social;

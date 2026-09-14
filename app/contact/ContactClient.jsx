@@ -12,8 +12,9 @@ import {
   SelectValue,
   SelectTrigger,
 } from "@/components/ui/select";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkedAlt } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkedAlt, FaGlobe } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { person } from "@/lib/person";
 
 // Custom notification component
 const Notification = ({ message, type, onClose }) => (
@@ -27,26 +28,26 @@ const Notification = ({ message, type, onClose }) => (
   >
     <div className="flex items-center gap-2">
       <span>{message}</span>
-      <button onClick={onClose} className="ml-2 hover:opacity-80">×</button>
+      <button onClick={onClose} className="ml-2 hover:opacity-80" type="button" aria-label="Close notification">×</button>
     </div>
   </motion.div>
 );
 
 const info = [
   {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "(+91) 7383055495",
-  },
-  {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "sharmapurushotam57@gmail.com",
+    description: person.emailPublic,
   },
   {
     icon: <FaMapMarkedAlt />,
-    title: "Address",
-    description: "Surat, Gujarat, India",
+    title: "Location",
+    description: person.location.label,
+  },
+  {
+    icon: <FaGlobe />,
+    title: "Profiles",
+    description: "LinkedIn · GitHub · Hashnode · Matofly",
   },
 ];
 
@@ -130,9 +131,11 @@ const Contact = () => {
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-10 glass-card backdrop-blur-sm bg-white/5">
-              <h1 className="text-4xl text-accent">Let's Collaborate!</h1>
+              <h1 className="text-4xl text-accent">Let&apos;s talk</h1>
               <p className="text-white/60">
-                With over 2 years of experience as a DevOps Engineer, I'm passionate about streamlining processes and driving efficiency through innovative solutions. Whether you're looking for full-time support or need an expert for freelance projects, I'm here to help your business scale and succeed. Let's connect and explore how we can work together to bring your ideas to life!
+                I&apos;m a Technical Product Manager with a DevOps and cloud infrastructure
+                background. Reach out about product strategy, SaaS product work, PRDs and
+                roadmaps, or engineering collaboration.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input 
@@ -163,9 +166,8 @@ const Contact = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   type="tel"
-                  placeholder="Phone Number"
+                  placeholder="Phone (optional)"
                   className="bg-white/10 border-white/10 focus:border-accent"
-                  required
                 />
               </div>
               <Select 
@@ -177,12 +179,13 @@ const Contact = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectLabel>Select a Service</SelectLabel>
-                    <SelectItem value="frontend">Frontend Development</SelectItem>
-                    <SelectItem value="logo">Logo Design</SelectItem>
-                    <SelectItem value="backend">Backend Development</SelectItem>
-                    <SelectItem value="fullstack">Fullstack Development</SelectItem>
-                    <SelectItem value="devops">DevOps</SelectItem>
+                    <SelectLabel>Select a topic</SelectLabel>
+                    <SelectItem value="product">Product strategy / TPM</SelectItem>
+                    <SelectItem value="saas">SaaS / marketplace product</SelectItem>
+                    <SelectItem value="prd">PRDs & roadmapping</SelectItem>
+                    <SelectItem value="engineering">Engineering collaboration</SelectItem>
+                    <SelectItem value="devops">DevOps / cloud background</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

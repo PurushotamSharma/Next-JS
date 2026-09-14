@@ -1,17 +1,12 @@
-import ServicesClient from './ServicesClient';
+import ServicesClient from "./ServicesClient";
+import { buildMetadata } from "@/lib/seo";
+import { person } from "@/lib/person";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "Services",
-  description: "Professional DevOps and development services including CI/CD implementation, cloud solutions, Infrastructure as Code, and web development. Expert consultation available.",
-  openGraph: {
-    title: 'Services | Purushotam - DevOps & Development Services',
-    description: 'Professional DevOps services: CI/CD, cloud migration, Infrastructure as Code, and modern web development solutions.',
-    url: 'https://purushotam.devopsguy.in/services',
-  },
-  alternates: {
-    canonical: 'https://purushotam.devopsguy.in/services',
-  },
-};
+  description: `${person.name} — product and technical services spanning product strategy, SaaS product work, and cloud / DevOps collaboration.`,
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return <ServicesClient />;

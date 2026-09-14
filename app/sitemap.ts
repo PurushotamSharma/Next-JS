@@ -1,58 +1,45 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next";
+import { SITE_URL, person } from "@/lib/person";
+import blogData from "@/app/blog/blogData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://purushotam.devopsguy.in'
-  const currentDate = new Date().toISOString()
+  const now = new Date().toISOString();
 
-  // Static routes
-  const routes = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/resume`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/work`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/consultation`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-  ]
+  const staticRoutes = [
+    { path: "", priority: 1.0, changeFrequency: "weekly" as const },
+    { path: "/about", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/product", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/experience", priority: 0.9, changeFrequency: "monthly" as const },
+    { path: "/projects", priority: 0.9, changeFrequency: "weekly" as const },
+    { path: "/engineering", priority: 0.8, changeFrequency: "monthly" as const },
+    { path: "/writing", priority: 0.8, changeFrequency: "weekly" as const },
+    { path: "/contact", priority: 0.6, changeFrequency: "monthly" as const },
+    { path: "/services", priority: 0.5, changeFrequency: "monthly" as const },
+    { path: "/consultation", priority: 0.4, changeFrequency: "monthly" as const },
+  ];
 
-  // TODO: Add dynamic blog post routes
-  // You can extend this to include dynamic routes like blog posts
-  // by importing your blog data and mapping over it
+  const projectRoutes = person.productProjects.map((p) => ({
+    url: `${SITE_URL}/projects/${p.id}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
 
-  return routes
+  const blogRoutes = Object.values(blogData || {}).map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug || post.id}`,
+    lastModified: post.date || now,
+    changeFrequency: "yearly" as const,
+    priority: 0.5,
+  }));
+
+  return [
+    ...staticRoutes.map((route) => ({
+      url: `${SITE_URL}${route.path}`,
+      lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...projectRoutes,
+    ...blogRoutes,
+  ];
 }
