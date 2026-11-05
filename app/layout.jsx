@@ -1,17 +1,29 @@
-import { JetBrains_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTransition";
 import JsonLd from "@/components/JsonLd";
 import { person, SITE_URL } from "@/lib/person";
 import { getPersonJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 
+const inter = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const display = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500"],
   variable: "--font-jetbrainsMono",
+  display: "swap",
 });
 
 export const metadata = {
@@ -57,10 +69,10 @@ export const metadata = {
     description: person.shortDescription,
     images: [
       {
-        url: "/og-cover.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: `${person.name} — ${person.title}`,
+        alt: `${person.name}, ${person.title}`,
       },
     ],
   },
@@ -68,7 +80,7 @@ export const metadata = {
     card: "summary_large_image",
     title: `${person.name} | ${person.title}`,
     description: person.shortDescription,
-    images: ["/og-cover.jpg"],
+    images: ["/og-image.jpg"],
     creator: "@iampurushotamps",
   },
   alternates: {
@@ -82,18 +94,14 @@ export default function RootLayout({ children }) {
       <head>
         <JsonLd data={[getWebsiteJsonLd(), getPersonJsonLd()]} />
       </head>
-      <body className={jetbrainsMono.variable}>
+      <body className={`${inter.variable} ${display.variable} ${jetbrainsMono.variable}`}>
         <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
           <div className="gradient-overlay" />
-          <div className="grid-bg" />
         </div>
 
         <Header />
-        <StairTransition />
-        <PageTransition>
-          <main id="main-content">{children}</main>
-          <Footer />
-        </PageTransition>
+        <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );

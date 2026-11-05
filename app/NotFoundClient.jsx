@@ -12,7 +12,7 @@ export default function NotFoundClient() {
             That URL doesn&apos;t exist. Try one of these pages instead.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left bg-[#1A2333]/40 border border-white/10 rounded-xl p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left bg-surface border border-white/10 rounded-xl p-6">
             {[
               { href: "/", label: "Home" },
               { href: "/product", label: "Product" },

@@ -29,14 +29,14 @@ const SuccessMessage = ({ formData }) => (
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-8"
     >
-        <div className="w-16 h-16 bg-[#4ADE80] rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="w-16 h-16 bg-[#F2542D] rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-8 h-8 text-gray-900" />
         </div>
         <h1 className="text-2xl font-bold mb-4 text-white">Booking Confirmed!</h1>
         <p className="text-white/60 mb-6">
             Thank you for scheduling a consultation! We've sent the details to {formData.email}
         </p>
-        <div className="bg-[#1A2333]/20 backdrop-blur-sm p-6 rounded-lg text-left mb-6 border border-white/10">
+        <div className="bg-surface backdrop-blur-sm p-6 rounded-lg text-left mb-6 border border-white/10">
             <p className="text-white/80 mb-4">Consultation Details:</p>
             <ul className="space-y-2 text-white/60">
                 <li>• Date: {new Date(formData.date).toLocaleDateString()}</li>
@@ -56,7 +56,7 @@ const SuccessMessage = ({ formData }) => (
             <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-[#4ADE80] text-gray-900 px-8 py-3 rounded-lg font-medium"
+                className="bg-[#F2542D] text-gray-900 px-8 py-3 rounded-lg font-medium"
             >
                 Back to Services
             </motion.button>
@@ -98,18 +98,17 @@ export default function ConsultationPage() {
             {/* Background Effects */}
             <div className="fixed inset-0 -z-10">
                 {/* Dark background */}
-                <div className="absolute inset-0 bg-[#0F172A]" />
+                <div className="absolute inset-0 bg-primary" />
 
                 {/* Grid pattern */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
                 {/* Radial gradients */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(74,222,128,0.1),transparent_50%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(242,84,45,0.1),transparent_50%)]" />
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: [0.3, 0.5, 0.3] }}
                     transition={{ duration: 5, repeat: Infinity }}
-                    className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(74,222,128,0.1),transparent_50%)]"
+                    className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(242,84,45,0.1),transparent_50%)]"
                 />
             </div>
 
@@ -129,12 +128,12 @@ export default function ConsultationPage() {
                     <div className="flex justify-center mb-12">
                         {[1, 2, 3].map((s) => (
                             <div key={s} className="flex items-center">
-                                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${s <= step ? 'bg-[#4ADE80] text-gray-900' : 'bg-[#1A2333]/50 text-white/40'
+                                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${s <= step ? 'bg-[#F2542D] text-gray-900' : 'bg-surface text-white/40'
                                     }`}>
                                     {s < step ? <Check className="w-5 h-5" /> : s}
                                 </div>
                                 {s < 3 && (
-                                    <div className={`w-20 h-0.5 ${s < step ? 'bg-[#4ADE80]' : 'bg-[#1A2333]/50'
+                                    <div className={`w-20 h-0.5 ${s < step ? 'bg-[#F2542D]' : 'bg-surface'
                                         }`} />
                                 )}
                             </div>
@@ -142,7 +141,7 @@ export default function ConsultationPage() {
                     </div>
                 )}
 
-                <div className="bg-[#1A2333]/20 backdrop-blur-sm rounded-2xl border border-white/10 p-8">
+                <div className="bg-surface backdrop-blur-sm rounded-2xl border border-white/10 p-8">
                     {!showSuccess ? (
                         <>
                             {step === 1 && (
@@ -157,7 +156,7 @@ export default function ConsultationPage() {
                                         placeholder="Your Name"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full px-4 py-3 bg-[#1A2333]/30 border border-white/10 rounded-lg text-white placeholder:text-white/40 focus:border-[#4ADE80]/50 focus:outline-none transition-colors"
+                                        className="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white placeholder:text-white/40 focus:border-[#F2542D]/50 focus:outline-none transition-colors"
                                         required
                                     />
 
@@ -166,7 +165,7 @@ export default function ConsultationPage() {
                                         placeholder="Email Address"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full px-4 py-3 bg-[#1A2333]/30 border border-white/10 rounded-lg text-white placeholder:text-white/40 focus:border-[#4ADE80]/50 focus:outline-none transition-colors"
+                                        className="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white placeholder:text-white/40 focus:border-[#F2542D]/50 focus:outline-none transition-colors"
                                         required
                                     />
 
@@ -175,19 +174,19 @@ export default function ConsultationPage() {
                                         placeholder="Company Name"
                                         value={formData.company}
                                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                        className="w-full px-4 py-3 bg-[#1A2333]/30 border border-white/10 rounded-lg text-white placeholder:text-white/40 focus:border-[#4ADE80]/50 focus:outline-none transition-colors"
+                                        className="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white placeholder:text-white/40 focus:border-[#F2542D]/50 focus:outline-none transition-colors"
                                     />
 
                                     <div className="relative">
                                         <select
                                             value={formData.service}
                                             onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                                            className="w-full px-4 py-3 bg-[#1A2333]/30 border border-white/10 rounded-lg text-white appearance-none focus:border-[#4ADE80]/50 focus:outline-none transition-colors"
+                                            className="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white appearance-none focus:border-[#F2542D]/50 focus:outline-none transition-colors"
                                             required
                                         >
-                                            <option value="" className="bg-[#1A2333]">Select a service...</option>
+                                            <option value="" className="bg-surface">Select a service...</option>
                                             {services && services.map((service) => (
-                                                <option key={service.num} value={service.title} className="bg-[#1A2333]">
+                                                <option key={service.num} value={service.title} className="bg-surface">
                                                     {service.title}
                                                 </option>
                                             ))}
@@ -199,14 +198,14 @@ export default function ConsultationPage() {
                                         placeholder="Tell us about your project or requirements..."
                                         value={formData.description}
                                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                                        className="w-full px-4 py-3 bg-[#1A2333]/30 border border-white/10 rounded-lg text-white placeholder:text-white/40 h-32 resize-none focus:border-[#4ADE80]/50 focus:outline-none transition-colors"
+                                        className="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white placeholder:text-white/40 h-32 resize-none focus:border-[#F2542D]/50 focus:outline-none transition-colors"
                                     />
 
                                     <motion.button
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         onClick={() => setStep(2)}
-                                        className="w-full bg-[#4ADE80] text-gray-900 py-3 rounded-lg font-medium hover:bg-[#4ADE80]/90 transition-colors"
+                                        className="w-full bg-[#F2542D] text-gray-900 py-3 rounded-lg font-medium hover:bg-[#F2542D]/90 transition-colors"
                                     >
                                         Next Step
                                     </motion.button>
@@ -226,7 +225,7 @@ export default function ConsultationPage() {
                                             type="date"
                                             value={formData.date}
                                             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                                            className="w-full px-4 py-3 bg-[#1A2333]/30 border border-white/10 rounded-lg text-white focus:border-[#4ADE80]/50 focus:outline-none transition-colors"
+                                            className="w-full px-4 py-3 bg-surface border border-white/10 rounded-lg text-white focus:border-[#F2542D]/50 focus:outline-none transition-colors"
                                             min={new Date().toISOString().split('T')[0]}
                                             required
                                         />
@@ -240,8 +239,8 @@ export default function ConsultationPage() {
                                                     key={slot.value}
                                                     onClick={() => setFormData({ ...formData, time: slot.time })}
                                                     className={`p-3 rounded-lg border backdrop-blur-sm transition-all duration-300 ${formData.time === slot.time
-                                                            ? 'border-[#4ADE80] bg-[#4ADE80]/10 text-[#4ADE80]'
-                                                            : 'border-white/10 bg-[#1A2333]/30 text-white hover:border-white/20'
+                                                            ? 'border-[#F2542D] bg-[#F2542D]/10 text-[#F2542D]'
+                                                            : 'border-white/10 bg-surface text-white hover:border-white/20'
                                                         }`}
                                                 >
                                                     {slot.time}
@@ -255,7 +254,7 @@ export default function ConsultationPage() {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             onClick={() => setStep(1)}
-                                            className="w-full border border-white/20 text-white py-3 rounded-lg font-medium bg-[#1A2333]/30 hover:bg-[#1A2333]/50 transition-colors"
+                                            className="w-full border border-white/20 text-white py-3 rounded-lg font-medium bg-surface hover:bg-surface transition-colors"
                                         >
                                             Back
                                         </motion.button>
@@ -263,7 +262,7 @@ export default function ConsultationPage() {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             onClick={() => setStep(3)}
-                                            className="w-full bg-[#4ADE80] text-gray-900 py-3 rounded-lg font-medium hover:bg-[#4ADE80]/90 transition-colors"
+                                            className="w-full bg-[#F2542D] text-gray-900 py-3 rounded-lg font-medium hover:bg-[#F2542D]/90 transition-colors"
                                         >
                                             Next Step
                                         </motion.button>
@@ -278,7 +277,7 @@ export default function ConsultationPage() {
                                         <p className="text-white/60">Review your consultation details</p>
                                     </div>
 
-                                    <div className="space-y-4 bg-[#1A2333]/30 p-6 rounded-lg border border-white/10">
+                                    <div className="space-y-4 bg-surface p-6 rounded-lg border border-white/10">
                                         <div className="flex justify-between items-center py-2">
                                             <span className="text-white/60">Name</span>
                                             <span className="text-white font-medium">{formData.name}</span>
@@ -313,7 +312,7 @@ export default function ConsultationPage() {
                                     </div>
 
                                     {formData.description && (
-                                        <div className="bg-[#1A2333]/30 p-6 rounded-lg border border-white/10">
+                                        <div className="bg-surface p-6 rounded-lg border border-white/10">
                                             <h3 className="text-white/60 mb-2">Description</h3>
                                             <p className="text-white">{formData.description}</p>
                                         </div>
@@ -324,7 +323,7 @@ export default function ConsultationPage() {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             onClick={() => setStep(2)}
-                                            className="w-full border border-white/20 text-white py-3 rounded-lg font-medium bg-[#1A2333]/30 hover:bg-[#1A2333]/50 transition-colors"
+                                            className="w-full border border-white/20 text-white py-3 rounded-lg font-medium bg-surface hover:bg-surface transition-colors"
                                             disabled={isSubmitting}
                                         >
                                             Back
@@ -333,7 +332,7 @@ export default function ConsultationPage() {
                                             whileHover={{ scale: 1.02 }}
                                             whileTap={{ scale: 0.98 }}
                                             onClick={handleSubmit}
-                                            className="w-full bg-[#4ADE80] text-gray-900 py-3 rounded-lg font-medium hover:bg-[#4ADE80]/90 transition-colors flex items-center justify-center"
+                                            className="w-full bg-[#F2542D] text-gray-900 py-3 rounded-lg font-medium hover:bg-[#F2542D]/90 transition-colors flex items-center justify-center"
                                             disabled={isSubmitting}
                                         >
                                             {isSubmitting ? (

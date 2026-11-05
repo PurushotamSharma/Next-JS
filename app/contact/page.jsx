@@ -4,7 +4,7 @@ import { person } from "@/lib/person";
 
 export const metadata = buildMetadata({
   title: `Contact ${person.name}`,
-  description: `Contact ${person.name}, Technical Product Manager — product strategy, SaaS, PRDs, and engineering collaboration.`,
+  description: `Contact ${person.name}, Technical Product Manager, product strategy, SaaS, PRDs, and engineering collaboration.`,
   path: "/contact",
   absoluteTitle: true,
 });

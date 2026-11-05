@@ -61,9 +61,8 @@ const BlogPost = ({ data }) => {
     <div className="min-h-screen bg-primary relative">
       {/* Background Effects */}
       <div className="fixed inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(0,255,153,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(0,255,153,0.15),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_60%,rgba(242,84,45,0.12),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(242,84,45,0.12),transparent_50%)]" />
       </div>
 
       {/* Main Content */}
@@ -71,7 +70,7 @@ const BlogPost = ({ data }) => {
         {/* Back Button */}
         <Link 
           href="/blog"
-          className="inline-flex items-center text-accent hover:text-accent/80 mb-8 cursor-pointer py-2 px-4 -ml-4 rounded-lg hover:bg-[#1A2333]/30 transition-all"
+          className="inline-flex items-center text-accent hover:text-accent/80 mb-8 cursor-pointer py-2 px-4 -ml-4 rounded-lg hover:bg-surface transition-all"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -80,7 +79,7 @@ const BlogPost = ({ data }) => {
         </Link>
 
         {/* Blog Header */}
-        <div className="bg-[#1A2333]/50 border border-accent/20 rounded-xl overflow-hidden mb-12">
+        <div className="bg-surface border border-accent/20 rounded-xl overflow-hidden mb-12">
           <div className="relative h-80">
             <Image
               src={data.coverImage}
@@ -89,7 +88,7 @@ const BlogPost = ({ data }) => {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1A2333] to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" />
           </div>
           <div className="p-8">
             <div className="text-accent mb-2">{data.category}</div>
@@ -115,7 +114,7 @@ const BlogPost = ({ data }) => {
         {/* Blog Content */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-3">
-            <div className="bg-[#1A2333]/50 border border-accent/20 rounded-xl p-8">
+            <div className="bg-surface border border-accent/20 rounded-xl p-8">
               <div className="prose prose-lg prose-invert max-w-none">
                 <div 
                   className="blog-content"
@@ -128,7 +127,7 @@ const BlogPost = ({ data }) => {
           {/* Sidebar */}
           <div className="lg:col-span-1">
             {/* Technologies Box */}
-            <div className="bg-[#1A2333]/50 border border-accent/20 rounded-xl p-6 mb-8">
+            <div className="bg-surface border border-accent/20 rounded-xl p-6 mb-8">
               <h3 className="text-xl font-bold text-white mb-4">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
                 {data.technologies.map((tech, i) => (
@@ -143,7 +142,7 @@ const BlogPost = ({ data }) => {
             </div>
 
             {/* Share Box */}
-            <div className="bg-[#1A2333]/50 border border-accent/20 rounded-xl p-6">
+            <div className="bg-surface border border-accent/20 rounded-xl p-6">
               <h3 className="text-xl font-bold text-white mb-4">Share This Post</h3>
               <ShareButtons title={data.title} />
             </div>
@@ -151,7 +150,7 @@ const BlogPost = ({ data }) => {
         </div>
 
         {/* Contact CTA */}
-        <div className="bg-[#1A2333]/50 border border-accent/20 rounded-xl p-8 mt-12 text-center">
+        <div className="bg-surface border border-accent/20 rounded-xl p-8 mt-12 text-center">
           <h2 className="text-2xl font-bold text-white mb-4">Need Similar Solutions for Your Business?</h2>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
             I specialize in creating custom {data.category.toLowerCase()} solutions tailored to your specific requirements.
@@ -182,10 +181,10 @@ function convertMarkdownToHtml(markdown) {
     .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
     
     // Code blocks
-    .replace(/```([a-zA-Z]*)\n([\s\S]*?)```/g, '<div class="my-6"><pre class="bg-gray-900 p-4 rounded-lg overflow-x-auto"><code class="text-sm text-gray-100">$2</code></pre></div>')
+    .replace(/```([a-zA-Z]*)\n([\s\S]*?)```/g, '<div class="my-6"><pre class="bg-surface border border-line p-4 rounded-lg overflow-x-auto"><code class="text-sm text-gray-100">$2</code></pre></div>')
     
     // Inline code
-    .replace(/`([^`]+)`/g, '<code class="bg-gray-800 text-accent px-2 py-1 rounded text-sm">$1</code>')
+    .replace(/`([^`]+)`/g, '<code class="bg-accent-soft text-accent px-2 py-1 rounded text-sm">$1</code>')
     
     // Lists
     .replace(/^\* (.*$)/gim, '<li class="mb-2 text-gray-300">$1</li>')

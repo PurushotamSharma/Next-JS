@@ -1,12 +1,12 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { PageHero, Container, Section, Eyebrow } from "@/components/Section";
-import { person, formatRoleDates } from "@/lib/person";
+import { person, formatRoleDates, formatRoleDuration } from "@/lib/person";
 import { buildMetadata, getBreadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: `${person.name} | Product & Engineering Experience`,
-  description: `Experience for ${person.name}: Technical Product Manager at SellMato (current), Technical Lead at Pietech Technology, DevOps Engineer at Credence Technology, plus independent product work.`,
+  description: `${person.name}: Technical Product Manager at SellMato since June 2025, with product ownership and DevOps experience from 2021.`,
   path: "/experience",
   absoluteTitle: true,
 });
@@ -22,7 +22,7 @@ export default function ExperiencePage() {
       />
       <PageHero
         title="Experience"
-        description="Professional employment and independent product management are kept separate. Current role: Technical Product Manager at SellMato."
+        description="Five years in tech: DevOps engineering from 2021, product ownership from 2024, and Technical Product Manager at SellMato since June 2025."
       />
 
       {/* PROFESSIONAL EXPERIENCE */}
@@ -32,7 +32,7 @@ export default function ExperiencePage() {
             <Eyebrow>Professional Experience</Eyebrow>
             <h2 className="text-2xl md:text-3xl font-semibold">Employment</h2>
             <p className="text-white/45 text-sm mt-2 max-w-2xl">
-              Full-time professional roles only. Independent and freelance product work is
+              Full-time roles, newest first. Client product work is
               listed in a separate section below.
             </p>
           </div>
@@ -49,13 +49,16 @@ export default function ExperiencePage() {
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
                   <h3 className="text-2xl font-semibold">{role.company}</h3>
                   {role.isCurrent ? (
-                    <span className="text-xs uppercase tracking-wider text-accent border border-accent/30 px-2 py-0.5 rounded">
+                    <span className="text-xs text-accent border border-accent/30 px-2 py-0.5 rounded">
                       Current
                     </span>
                   ) : null}
                 </div>
                 <p className="text-accent mb-1">{role.title}</p>
-                <p className="text-sm text-white/40 mb-4">{formatRoleDates(role)}</p>
+                <p className="text-sm text-white/40 mb-4">
+                  {formatRoleDates(role)}
+                  {formatRoleDuration(role) ? ` · ${formatRoleDuration(role)}` : ""}
+                </p>
                 {role.summary ? (
                   <p className="text-white/60 mb-4 max-w-3xl leading-relaxed">
                     {role.summary}
@@ -77,7 +80,7 @@ export default function ExperiencePage() {
                 ) : null}
                 {role.productOwnership?.length ? (
                   <div className="mt-6 space-y-4">
-                    <p className="text-sm uppercase tracking-wider text-white/40">
+                    <p className="text-sm text-white/40">
                       Product ownership
                     </p>
                     {role.productOwnership.map((po) => (
@@ -98,17 +101,17 @@ export default function ExperiencePage() {
         </Container>
       </Section>
 
-      {/* INDEPENDENT — visually distinct, not a timeline */}
+      {/* INDEPENDENT, visually distinct, not a timeline */}
       <Section className="bg-white/[0.02] border-y border-white/5">
         <Container>
           <div className="mb-10 max-w-2xl">
-            <Eyebrow>Independent Product Management</Eyebrow>
+            <Eyebrow>Client Engagements</Eyebrow>
             <h2 className="text-2xl md:text-3xl font-semibold">
-              Freelance / independent product work
+              Client product work
             </h2>
             <p className="text-white/45 text-sm mt-3 leading-relaxed">
               These engagements are <strong className="text-white/70 font-medium">not employment</strong>.
-              They are separate product collaborations with founders and engineering teams.
+              They are product engagements for clients, working with founders and engineering teams.
             </p>
           </div>
 
@@ -118,7 +121,7 @@ export default function ExperiencePage() {
                 key={work.id}
                 className="border border-dashed border-white/20 rounded-xl p-6 md:p-8 bg-primary/40"
               >
-                <p className="text-xs uppercase tracking-wider text-white/40 mb-3">
+                <p className="text-xs text-white/40 mb-3">
                   {work.category}
                 </p>
                 <h3 className="text-2xl font-semibold mb-1">{work.name}</h3>

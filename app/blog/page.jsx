@@ -1,13 +1,6 @@
-import BlogClient from "./BlogClient";
-import { buildMetadata } from "@/lib/seo";
-import { person } from "@/lib/person";
+import { redirect } from "next/navigation";
 
-export const metadata = buildMetadata({
-  title: "Case studies",
-  description: `Technical case studies by ${person.name} on CI/CD, cloud infrastructure, and DevOps — supporting a Technical Product Manager background.`,
-  path: "/blog",
-});
-
+/** Legacy route: the writing page lists every post */
 export default function BlogPage() {
-  return <BlogClient />;
+  redirect("/writing");
 }
