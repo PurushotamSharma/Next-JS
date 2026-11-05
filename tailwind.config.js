@@ -21,7 +21,7 @@ module.exports = {
 		primary: 'var(--font-inter)',
 		sans: 'var(--font-inter)',
 		display: 'var(--font-display)',
-		mono: 'var(--font-jetbrainsMono)'
+		mono: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
 	  },
 	  extend: {
 		colors: {

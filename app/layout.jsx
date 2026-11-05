@@ -1,4 +1,4 @@
-import { DM_Sans, JetBrains_Mono, Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -6,28 +6,32 @@ import JsonLd from "@/components/JsonLd";
 import { person, SITE_URL } from "@/lib/person";
 import { getPersonJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 
-const inter = DM_Sans({
-  subsets: ["latin"],
+/* Fonts are self hosted so the build never depends on Google Fonts */
+const inter = localFont({
+  src: [
+    { path: "./fonts/DMSans-Variable.woff2", weight: "100 1000", style: "normal" },
+    { path: "./fonts/DMSans-Variable-Italic.woff2", weight: "100 1000", style: "italic" },
+  ],
   variable: "--font-inter",
   display: "swap",
 });
 
-const display = Bricolage_Grotesque({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+const display = localFont({
+  src: "./fonts/BricolageGrotesque-Variable.woff2",
+  weight: "200 800",
   variable: "--font-display",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-jetbrainsMono",
   display: "swap",
 });
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
   title: {
     default: `${person.name} | ${person.title}`,
     template: `%s | ${person.name}`,
@@ -94,7 +98,7 @@ export default function RootLayout({ children }) {
       <head>
         <JsonLd data={[getWebsiteJsonLd(), getPersonJsonLd()]} />
       </head>
-      <body className={`${inter.variable} ${display.variable} ${jetbrainsMono.variable}`}>
+      <body className={`${inter.variable} ${display.variable}`}>
         <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
           <div className="gradient-overlay" />
         </div>
