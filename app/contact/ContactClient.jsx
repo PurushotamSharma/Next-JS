@@ -47,7 +47,7 @@ const info = [
   {
     icon: <FaGlobe />,
     title: "Profiles",
-    description: "LinkedIn · GitHub · Hashnode · Matofly",
+    description: "LinkedIn · GitHub · Hashnode",
   },
 ];
 

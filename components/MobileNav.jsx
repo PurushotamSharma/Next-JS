@@ -16,7 +16,7 @@ const MobileNav = () => {
         <button
           type="button"
           aria-label="Open navigation menu"
-          className="relative p-2 rounded-full bg-[#1A2333]/50 border border-accent/20"
+          className="relative p-2 rounded-full bg-surface border border-accent/20"
         >
           <CiMenuFries className="text-[28px] text-accent" />
         </button>
@@ -29,7 +29,7 @@ const MobileNav = () => {
           <div className="mt-16 mb-10 text-center">
             <SheetClose asChild>
               <Link href="/" className="inline-flex items-center gap-3">
-                <span className="text-2xl font-mono">
+                <span className="text-2xl font-medium">
                   {person.givenName}
                   <span className="text-accent">.</span>
                 </span>
@@ -63,7 +63,7 @@ const MobileNav = () => {
                       href={link.path}
                       className={`block px-6 py-3 rounded-full text-lg transition-colors ${
                         isActive
-                          ? "bg-[#1A2333]/50 text-accent"
+                          ? "bg-surface text-accent"
                           : "text-white hover:text-accent"
                       }`}
                     >

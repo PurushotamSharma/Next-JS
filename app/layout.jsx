@@ -1,21 +1,37 @@
-import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTransition";
 import JsonLd from "@/components/JsonLd";
 import { person, SITE_URL } from "@/lib/person";
 import { getPersonJsonLd, getWebsiteJsonLd } from "@/lib/seo";
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
-  variable: "--font-jetbrainsMono",
+/* Fonts are self hosted so the build never depends on Google Fonts */
+const inter = localFont({
+  src: [
+    { path: "./fonts/DMSans-Variable.woff2", weight: "100 1000", style: "normal" },
+    { path: "./fonts/DMSans-Variable-Italic.woff2", weight: "100 1000", style: "italic" },
+  ],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const display = localFont({
+  src: "./fonts/BricolageGrotesque-Variable.woff2",
+  weight: "200 800",
+  variable: "--font-display",
+  display: "swap",
 });
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
   title: {
     default: `${person.name} | ${person.title}`,
     template: `%s | ${person.name}`,
@@ -57,10 +73,10 @@ export const metadata = {
     description: person.shortDescription,
     images: [
       {
-        url: "/og-cover.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: `${person.name} — ${person.title}`,
+        alt: `${person.name}, ${person.title}`,
       },
     ],
   },
@@ -68,7 +84,7 @@ export const metadata = {
     card: "summary_large_image",
     title: `${person.name} | ${person.title}`,
     description: person.shortDescription,
-    images: ["/og-cover.jpg"],
+    images: ["/og-image.jpg"],
     creator: "@iampurushotamps",
   },
   alternates: {
@@ -82,18 +98,14 @@ export default function RootLayout({ children }) {
       <head>
         <JsonLd data={[getWebsiteJsonLd(), getPersonJsonLd()]} />
       </head>
-      <body className={jetbrainsMono.variable}>
+      <body className={`${inter.variable} ${display.variable}`}>
         <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
           <div className="gradient-overlay" />
-          <div className="grid-bg" />
         </div>
 
         <Header />
-        <StairTransition />
-        <PageTransition>
-          <main id="main-content">{children}</main>
-          <Footer />
-        </PageTransition>
+        <main id="main-content">{children}</main>
+        <Footer />
       </body>
     </html>
   );

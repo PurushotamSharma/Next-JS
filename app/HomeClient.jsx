@@ -2,364 +2,294 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { person, getFeaturedProductProjects } from "@/lib/person";
-import { Container, Section, Eyebrow } from "@/components/Section";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { person, getFeaturedProductProjects, formatRoleDates } from "@/lib/person";
+import { Container } from "@/components/Section";
 
-const fade = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0 },
-};
+/* What I own: three areas, middle one highlighted (orange) */
+const ownership = [
+  {
+    title: "Product strategy",
+    points: ["Roadmaps with founders", "PRDs and acceptance criteria", "Prioritisation by value and effort"],
+    href: "/product",
+  },
+  {
+    title: "Integrations & billing",
+    points: ["Shopify supplier sync", "Stripe subscriptions and trials", "Pricing and markup rules"],
+    href: "/projects/sellmato",
+    highlight: true,
+  },
+  {
+    title: "Platform & cloud",
+    points: ["AWS, Kubernetes, CI/CD", "Feasibility before commitment", "Reliability and monitoring"],
+    href: "/engineering",
+  },
+];
+
+/* Only verifiable numbers */
+const stats = [
+  { value: "5+", label: "Years in tech" },
+  { value: "4", label: "Products owned" },
+  { value: "99.9%", label: "Uptime delivered" },
+];
 
 export default function HomeClient() {
-  const productProjects = getFeaturedProductProjects();
-  const sellmato = productProjects.find((p) => p.id === "sellmato");
-  const otherProducts = productProjects.filter((p) => p.id !== "sellmato");
+  const projects = getFeaturedProductProjects();
+  const roles = person.employment;
 
   return (
-    <div className="min-h-screen relative">
-      {/* HERO */}
-      <section className="relative pt-36 pb-20 md:pt-44 md:pb-28">
+    <div className="relative overflow-hidden">
+      {/* ---------- HERO ---------- */}
+      <section className="relative pt-32 md:pt-36">
         <Container>
-          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-14 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center relative z-10"
+          >
+            <span className="inline-flex items-center gap-2 bg-accent-soft text-accent rounded-full pl-2 pr-4 py-1.5 text-sm font-semibold">
+              <span className="grid place-items-center w-6 h-6 rounded-full bg-accent text-snow text-xs animate-wave origin-[70%_70%]" aria-hidden="true">👋</span>
+              Hello, welcome!
+            </span>
+            <h1 className="mt-5 font-display font-bold leading-[1.02] text-[clamp(38px,6.2vw,84px)] break-words">
+              I&apos;m <span className="text-accent">Purushotam</span>,
+              <br />
+              Technical Product Manager
+            </h1>
+          </motion.div>
+
+          <div className="relative mt-2 lg:-mt-6 grid lg:grid-cols-[1fr_auto_1fr] items-end">
+            {/* left: positioning line + stat */}
             <motion.div
-              initial="hidden"
-              animate="show"
-              transition={{ staggerChildren: 0.08 }}
-              className="space-y-7"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.35 }}
+              className="hidden lg:block pb-40 max-w-[250px]"
             >
-              <motion.h1
-                variants={fade}
-                className="text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05]"
-              >
-                {person.name}
-              </motion.h1>
-
-              <motion.p variants={fade} className="text-xl md:text-2xl text-accent font-medium">
-                {person.title}
-              </motion.p>
-
-              <motion.p variants={fade} className="text-lg md:text-xl text-white/75">
-                {person.tagline}
-              </motion.p>
-
-              <motion.p
-                variants={fade}
-                className="text-base md:text-lg text-white/55 max-w-2xl leading-relaxed"
-              >
-                {person.supportingStatement}
-              </motion.p>
-
-              <motion.p variants={fade} className="text-sm text-white/45">
-                Currently working with{" "}
-                <span className="text-white/80">{person.currentRole.company}</span>
-              </motion.p>
-
-              <motion.div variants={fade} className="flex flex-wrap gap-4 pt-1">
-                <Link
-                  href="/projects/sellmato"
-                  className="inline-flex items-center gap-2 bg-accent text-primary px-6 py-3 rounded-full font-medium hover:bg-accent-hover transition-colors"
-                >
-                  View Product Work
-                  <ArrowRight size={18} />
-                </Link>
-                <Link
-                  href="/experience"
-                  className="inline-flex items-center gap-2 border border-white/15 text-white px-6 py-3 rounded-full hover:border-accent/50 hover:text-accent transition-colors"
-                >
-                  View Experience
-                </Link>
-              </motion.div>
+              <svg className="w-8 h-8 text-white mb-3" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+                <path d="M4 20c0-6 3-10 9-12l1 3c-3 1-5 3-5 6h4v8H4v-5zm14 0c0-6 3-10 9-12l1 3c-3 1-5 3-5 6h4v8h-9v-5z" />
+              </svg>
+              <p className="text-white/70 leading-relaxed">{person.tagline}</p>
+              <p className="mt-8 font-display text-4xl font-bold">5+</p>
+              <p className="text-white/60">Years in tech</p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative mx-auto w-full max-w-md"
-            >
-              <div className="relative aspect-square rounded-2xl overflow-hidden border border-white/10 bg-[#1A2333]/40">
+            {/* centre: photo on orange half circle */}
+            <div className="relative mx-auto w-[340px] sm:w-[440px] lg:w-[520px] h-[340px] sm:h-[420px] lg:h-[470px]">
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full aspect-square rounded-full bg-accent translate-y-1/2" />
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.6 }}
+                className="absolute inset-x-0 bottom-0 h-full"
+              >
                 <Image
                   src={person.imagePath}
                   alt={`${person.name}, ${person.title}`}
                   fill
                   priority
-                  className="object-cover"
-                  sizes="(max-width: 768px) 90vw, 400px"
+                  className="object-contain object-bottom"
+                  sizes="(max-width: 640px) 340px, 520px"
                 />
+              </motion.div>
+              {/* floating tags around the photo */}
+              <span className="hidden sm:inline-flex absolute left-[2%] top-[20%] z-10 items-center gap-2 bg-snow border border-line shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-full px-4 py-2 text-sm font-semibold animate-float">
+                <span className="w-2 h-2 rounded-full bg-accent" />PRDs &amp; roadmaps
+              </span>
+              <span className="hidden sm:inline-flex absolute right-[-8%] top-[18%] z-10 items-center gap-2 bg-ink text-snow shadow-[0_8px_24px_rgba(0,0,0,0.15)] rounded-full px-4 py-2 text-sm font-semibold animate-float-slow">
+                <span className="w-2 h-2 rounded-full bg-accent" />Shopify + Stripe
+              </span>
+              <span className="hidden sm:inline-flex absolute right-[-4%] top-[58%] z-10 items-center gap-2 bg-snow border border-line shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-full px-4 py-2 text-sm font-semibold animate-float">
+                <span className="w-2 h-2 rounded-full bg-ink" />AWS &amp; Kubernetes
+              </span>
+              {/* buttons overlapping the circle */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-snow shadow-[0_8px_24px_rgba(0,0,0,0.12)] rounded-full p-1.5 z-10 whitespace-nowrap">
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-1.5 bg-accent text-snow px-5 py-2.5 rounded-full font-medium hover:bg-accent-hover transition-colors"
+                >
+                  See my work <ArrowUpRight size={18} />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center px-5 py-2.5 rounded-full font-medium text-white border border-white/80 hover:bg-ink hover:text-snow transition-colors"
+                >
+                  Hire me
+                </Link>
               </div>
-              <p className="mt-4 text-sm text-white/45 text-center">
-                {person.currentRole.title} · {person.currentRole.company}
-              </p>
+            </div>
+
+            {/* right: current role */}
+            <motion.div
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.35 }}
+              className="hidden lg:block pb-40 text-right justify-self-end"
+            >
+              <p className="text-white/60">Currently at</p>
+              <p className="font-display text-4xl font-bold mt-1">{person.currentRole.company}</p>
+              <p className="text-white/70 mt-1">Since June 2025</p>
+              <div className="h-[3px] w-40 bg-white ml-auto mt-4 rounded-full" />
             </motion.div>
           </div>
         </Container>
       </section>
 
-      {/* SNAPSHOT */}
-      <Section className="border-t border-white/5 !py-14">
-        <Container>
-          <Eyebrow>Professional snapshot</Eyebrow>
-          <div className="grid md:grid-cols-2 gap-10">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-3">Current role</h2>
-              <p className="text-lg text-white/90">
-                {person.currentRole.title}
+      {/* ---------- WHAT I OWN (dark band) ---------- */}
+      <section className="relative">
+        <div className="mx-2 sm:mx-4 rounded-[28px] bg-ink text-snow py-16 md:py-20">
+          <Container>
+            <div className="flex flex-wrap items-end justify-between gap-6 border-b border-snow/15 pb-8 mb-10">
+              <h2 className="font-display text-4xl md:text-5xl font-bold">
+                What I <span className="text-accent">own</span>
+              </h2>
+              <p className="text-snow/65 max-w-md leading-relaxed">
+                The parts of a product closest to the infrastructure, where a technical PM
+                makes the biggest difference.
               </p>
-              <p className="text-white/55 mt-1">
-                Currently working with {person.currentRole.company}
-              </p>
-              <p className="text-sm text-white/35 mt-2">{person.currentRole.period}</p>
             </div>
-            <div>
-              <h2 className="text-2xl md:text-3xl font-semibold mb-4">Focus</h2>
-              <ul className="flex flex-wrap gap-2">
-                {person.focusAreas.map((item) => (
-                  <li
-                    key={item}
-                    className="text-sm text-white/70 border border-white/10 px-3 py-1.5 rounded-md"
+            <div className="grid md:grid-cols-3 gap-5">
+              {ownership.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className={`group relative rounded-3xl p-7 pb-20 transition-transform hover:-translate-y-1 ${
+                    item.highlight ? "bg-accent" : "bg-snow/[0.06] border border-snow/10"
+                  }`}
+                >
+                  <h3 className="font-display text-2xl font-bold mb-5">{item.title}</h3>
+                  <ul className={`space-y-2.5 ${item.highlight ? "text-snow/90" : "text-snow/70"}`}>
+                    {item.points.map((p) => (
+                      <li key={p} className="flex gap-2.5">
+                        <span className={`mt-2 h-1.5 w-1.5 rounded-full shrink-0 ${item.highlight ? "bg-snow" : "bg-accent"}`} />
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <span
+                    className={`absolute right-5 bottom-5 grid place-items-center w-12 h-12 rounded-full transition-colors ${
+                      item.highlight ? "bg-snow text-accent" : "bg-snow/10 text-snow group-hover:bg-accent"
+                    }`}
                   >
-                    {item}
-                  </li>
-                ))}
-              </ul>
+                    <ArrowUpRight size={20} />
+                  </span>
+                </Link>
+              ))}
             </div>
-          </div>
-        </Container>
-      </Section>
+          </Container>
+        </div>
+      </section>
 
-      {/* DIFFERENTIATOR */}
-      <Section>
+      {/* ---------- EXPERIENCE (centred dotted timeline) ---------- */}
+      <section className="py-20 md:py-28">
         <Container>
-          <Eyebrow>The differentiator</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-semibold max-w-3xl leading-tight mb-6">
-            Why a DevOps background makes a stronger Technical Product Manager
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-center mb-14">
+            My work <span className="text-accent">experience</span>
           </h2>
-          <p className="text-white/60 max-w-3xl leading-relaxed mb-12">
-            {person.skills.differentiator}
-          </p>
-
-          <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-6 md:gap-4 items-start">
-            <div className="border-t border-accent/40 pt-6">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-accent mb-4">Product</h3>
-              <ul className="space-y-2 text-white/70">
-                {person.skills.product.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="hidden md:flex items-center justify-center pt-10 text-2xl text-white/25" aria-hidden="true">
-              +
-            </div>
-            <div className="border-t border-white/20 pt-6">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-white/50 mb-4">Engineering</h3>
-              <ul className="space-y-2 text-white/70">
-                {person.skills.engineering.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="hidden md:flex items-center justify-center pt-10 text-2xl text-white/25" aria-hidden="true">
-              =
-            </div>
-            <div className="border-t border-accent pt-6 md:col-span-1">
-              <h3 className="text-sm tracking-[0.2em] uppercase text-accent mb-4">Result</h3>
-              <p className="text-xl font-semibold leading-snug">
-                Technical Product Management
-              </p>
-              <p className="text-sm text-white/50 mt-3 leading-relaxed">
-                I can translate business needs into product requirements and technical
-                decisions without losing either side.
-              </p>
-            </div>
-          </div>
-
-          {/* Mobile equation labels */}
-          <p className="md:hidden mt-8 text-center text-sm text-white/40">
-            Product + Engineering = Technical Product Management
-          </p>
-        </Container>
-      </Section>
-
-      {/* HOW I BUILD PRODUCTS */}
-      <Section className="bg-white/[0.02]">
-        <Container>
-          <Eyebrow>How I build products</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-10">A practical loop</h2>
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {person.productMethodology.map((item, index) => (
-              <li key={item.step} className="border border-white/10 rounded-xl p-5 bg-[#1A2333]/25">
-                <p className="text-xs text-accent mb-2">
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="font-semibold mb-2">{item.step}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{item.body}</p>
+          <ol className="relative max-w-4xl mx-auto">
+            <span className="absolute left-4 md:left-1/2 top-2 bottom-2 border-l-2 border-dashed border-line" aria-hidden="true" />
+            {roles.map((role, i) => (
+              <li key={role.id} className="relative grid md:grid-cols-2 gap-2 md:gap-16 pl-12 md:pl-0 pb-12 last:pb-0">
+                <span
+                  className={`absolute left-4 md:left-1/2 -translate-x-1/2 top-1 grid place-items-center w-7 h-7 rounded-full ring-4 ring-primary ${
+                    i % 2 === 0 ? "bg-accent/15" : "bg-white/10"
+                  }`}
+                  aria-hidden="true"
+                >
+                  <span className={`w-3 h-3 rounded-full ${i % 2 === 0 ? "bg-accent" : "bg-white"}`} />
+                </span>
+                <div className="md:text-right">
+                  <h3 className="font-display text-2xl font-bold">{role.company}</h3>
+                  <p className="text-white/55 mt-1">{formatRoleDates(role)}</p>
+                </div>
+                <div>
+                  <h4 className="font-display text-xl font-bold">{role.title}</h4>
+                  <p className="text-white/60 mt-1 leading-relaxed">{role.summary}</p>
+                </div>
               </li>
             ))}
           </ol>
-          <p className="mt-8">
-            <Link href="/product" className="text-accent hover:underline inline-flex items-center gap-1">
-              Full product approach <ArrowRight size={16} />
+          <p className="text-center mt-12">
+            <Link href="/experience" className="inline-flex items-center gap-2 font-medium border-b-2 border-accent pb-0.5 hover:text-accent transition-colors">
+              Full experience <ArrowRight size={16} />
             </Link>
           </p>
         </Container>
-      </Section>
+      </section>
 
-      {/* FEATURED: SELLMATO FIRST */}
-      <Section>
+      {/* ---------- STATS STRIP ---------- */}
+      <section className="pb-20">
         <Container>
-          <Eyebrow>Featured product work</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-8">SellMato</h2>
-          {sellmato ? (
-            <Link
-              href={sellmato.href}
-              className="group block border border-accent/30 rounded-2xl p-6 md:p-10 bg-[#1A2333]/40 hover:border-accent/60 transition-colors mb-10"
-            >
-              <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="text-xs uppercase tracking-wider text-accent border border-accent/30 px-2 py-0.5 rounded">
-                  Primary case study
-                </span>
-                <span className="text-sm text-white/45">{sellmato.role}</span>
-              </div>
-              <p className="text-lg text-white/70 leading-relaxed max-w-3xl mb-6">
-                {sellmato.summary}
-              </p>
-              <span className="inline-flex items-center gap-2 text-accent">
-                Read SellMato case study
-                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-              </span>
-            </Link>
-          ) : null}
-
-          <div className="flex items-end justify-between gap-4 mb-6 flex-wrap">
-            <h3 className="text-xl font-semibold text-white/80">More product work</h3>
-            <Link href="/projects" className="text-accent hover:underline inline-flex items-center gap-1 text-sm">
-              All projects <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid sm:grid-cols-3 gap-5">
-            {otherProducts.map((project) => (
-              <Link
-                key={project.id}
-                href={project.href}
-                className="group border border-white/10 rounded-xl p-5 hover:border-accent/40 transition-colors bg-[#1A2333]/25"
-              >
-                <h3 className="text-lg font-semibold group-hover:text-accent transition-colors mb-2">
-                  {project.name}
-                </h3>
-                <p className="text-xs text-white/40 mb-2">{project.role}</p>
-                <p className="text-sm text-white/55 leading-relaxed line-clamp-3">
-                  {project.summary}
+          <div className="grid grid-cols-3 rounded-3xl bg-surface border border-line">
+            {stats.map((s, i) => (
+              <div key={s.label} className={`py-8 md:py-10 text-center ${i ? "border-l border-line" : ""}`}>
+                <p className="font-display text-4xl md:text-5xl font-bold">
+                  {s.value.replace(/[+%]/, "")}
+                  <span className="text-accent">{s.value.match(/[+%]/)?.[0] || ""}</span>
                 </p>
-              </Link>
+                <p className="text-white/60 mt-1 text-sm md:text-base">{s.label}</p>
+              </div>
             ))}
           </div>
         </Container>
-      </Section>
+      </section>
 
-      {/* ENGINEERING — BELOW PRODUCT NARRATIVE */}
-      <Section className="border-t border-white/5">
+      {/* ---------- SELECTED WORK ---------- */}
+      <section className="pb-20 md:pb-28">
         <Container>
-          <Eyebrow>Engineering background</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4 max-w-3xl">
-            {person.skills.engineeringMessage}
-          </h2>
-          <p className="text-white/55 max-w-2xl mb-8 leading-relaxed">
-            DevOps and cloud experience is the foundation under my product work — not the
-            headline. It helps me judge feasibility, talk clearly with engineering, and avoid
-            requirements that look good on paper but break in production.
-          </p>
-          <ul className="flex flex-wrap gap-2 mb-8">
-            {person.skills.engineering.map((tech) => (
-              <li
-                key={tech}
-                className="text-sm border border-white/10 text-white/70 px-3 py-1.5 rounded-md"
-              >
-                {tech}
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/engineering"
-            className="text-accent hover:underline inline-flex items-center gap-1"
-          >
-            Technical background <ArrowRight size={16} />
-          </Link>
-        </Container>
-      </Section>
-
-      {/* WRITING */}
-      <Section className="bg-white/[0.02]">
-        <Container>
-          <Eyebrow>Selected writing</Eyebrow>
-          <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Technical writing on DevOps & cloud
-          </h2>
-          <p className="text-white/55 max-w-2xl mb-6 leading-relaxed">
-            {person.writing.summary}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/writing"
-              className="inline-flex items-center gap-2 border border-white/15 px-5 py-2.5 rounded-full hover:border-accent/50 hover:text-accent transition-colors"
-            >
-              On this site
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+            <h2 className="font-display text-4xl md:text-5xl font-bold">
+              Selected <span className="text-accent">work</span>
+            </h2>
+            <Link href="/projects" className="inline-flex items-center gap-2 bg-ink text-snow px-5 py-2.5 rounded-full font-medium hover:bg-accent transition-colors">
+              All case studies <ArrowUpRight size={18} />
             </Link>
-            <a
-              href={person.profiles.find((p) => p.id === "hashnode")?.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-white/15 px-5 py-2.5 rounded-full hover:border-accent/50 hover:text-accent transition-colors"
-            >
-              Hashnode
-            </a>
           </div>
-        </Container>
-      </Section>
-
-      {/* ABOUT + LINKS */}
-      <Section>
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Eyebrow>About</Eyebrow>
-              <h2 className="text-3xl font-semibold mb-4">The short version</h2>
-              <p className="text-white/60 leading-relaxed mb-6">
-                Technical Product Manager at {person.currentRole.company}. Based in{" "}
-                {person.location.label}. I bridge business, product strategy, and engineering
-                delivery.
-              </p>
-              <Link href="/about" className="text-accent hover:underline inline-flex items-center gap-1">
-                Full story <ArrowRight size={16} />
-              </Link>
-            </div>
-            <div>
-              <Eyebrow>Professional links</Eyebrow>
-              <ul className="space-y-3 mb-8">
-                {person.profiles.map((p) => (
-                    <li key={p.id}>
-                      <a
-                        href={p.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white/70 hover:text-accent transition-colors"
-                      >
-                        {p.label}
-                      </a>
-                    </li>
-                  ))}
-              </ul>
+          <div className="grid md:grid-cols-3 gap-5">
+            {projects.map((p, i) => (
               <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-accent text-primary px-6 py-3 rounded-full font-medium hover:bg-accent-hover transition-colors"
+                key={p.id}
+                href={p.href}
+                className={`group relative rounded-3xl p-8 pb-20 border transition-colors ${
+                  i === 0 ? "md:col-span-3 bg-surface border-line hover:border-accent" : "border-line hover:border-accent"
+                }`}
               >
-                Contact
-                <ArrowRight size={18} />
+                <p className="text-sm font-medium text-accent mb-3">{p.role}</p>
+                <h3 className="font-display text-3xl font-bold mb-3">{p.name}</h3>
+                <p className="text-white/65 leading-relaxed max-w-2xl">{p.summary}</p>
+                <span className="absolute right-6 bottom-6 grid place-items-center w-12 h-12 rounded-full bg-ink text-snow group-hover:bg-accent transition-colors">
+                  <ArrowUpRight size={20} />
+                </span>
               </Link>
-            </div>
+            ))}
           </div>
         </Container>
-      </Section>
+      </section>
+
+      {/* ---------- CTA (dark band) ---------- */}
+      <section className="pb-6">
+        <div className="mx-2 sm:mx-4 rounded-[28px] bg-ink text-snow py-16 md:py-24 relative overflow-hidden">
+          <div className="absolute -right-24 -bottom-40 w-96 h-96 rounded-full bg-accent/90" aria-hidden="true" />
+          <Container className="relative">
+            <h2 className="font-display text-4xl md:text-6xl font-bold max-w-3xl leading-[1.05]">
+              Need a PM who speaks <span className="text-accent">engineering</span>?
+            </h2>
+            <p className="text-snow/70 mt-5 max-w-xl leading-relaxed">
+              Open to remote Technical, Platform and Integrations PM roles in B2B SaaS,
+              developer tools, payments and AI. Based in India, working across time zones.
+            </p>
+            <div className="flex flex-wrap gap-3 mt-8">
+              <Link href="/contact" className="inline-flex items-center gap-1.5 bg-accent text-snow px-6 py-3 rounded-full font-medium hover:bg-accent-hover transition-colors">
+                Get in touch <ArrowUpRight size={18} />
+              </Link>
+              <Link href="/about" className="inline-flex items-center px-6 py-3 rounded-full font-medium border border-snow/40 hover:border-snow transition-colors">
+                About me
+              </Link>
+            </div>
+          </Container>
+        </div>
+      </section>
     </div>
   );
 }

@@ -15,7 +15,7 @@ const blogData = {
       },
       readTime: "8 min read",
       metaTitle: "CI/CD Pipeline Automation | Accelerate Your Software Delivery | DevOps Freelance Services",
-      metaDescription: "Learn how automated CI/CD pipelines can transform your software delivery process. Discover real-world implementation strategies from a DevOps expert.",
+      metaDescription: "Learn how automated CI/CD pipelines can transform your software delivery process. Discover real world implementation strategies from a DevOps expert.",
       content: `
   ## The Challenge
   
@@ -81,7 +81,7 @@ const blogData = {
   
   ## Contact Me for CI/CD Implementation
   
-  If your organization is struggling with slow, manual deployments or inconsistent release processes, I can help design and implement a custom CI/CD pipeline tailored to your specific needs. With experience across various industries including fintech, healthcare, and e-commerce, I bring proven expertise to transform your software delivery.
+  If your organization is struggling with slow, manual deployments or inconsistent release processes, I can help design and implement a custom CI/CD pipeline tailored to your specific needs. With experience across various industries including fintech, healthcare, and ecommerce, I bring proven expertise to transform your software delivery.
       `,
       technologies: ["Jenkins", "GitHub Actions", "Docker", "Kubernetes", "ArgoCD", "SonarQube"],
       caseStudy: {
@@ -108,11 +108,11 @@ const blogData = {
       title: "Infrastructure as Code: Automate Your Cloud Environment",
       slug: "infrastructure-as-code",
       category: "DevOps",
-      excerpt: "Discover how Infrastructure as Code reduced cloud costs by 32% while eliminating configuration drift for an e-commerce company.",
+      excerpt: "Discover how Infrastructure as Code reduced cloud costs by 32% while eliminating configuration drift for an ecommerce company.",
       coverImage: "/assets/work/iac-project.svg",
       date: "2025-03-28",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "9 min read",
@@ -121,7 +121,7 @@ const blogData = {
       content: `
   ## The Challenge
   
-  An e-commerce company was experiencing:
+  An ecommerce company was experiencing:
   
   - Rapidly increasing cloud costs (35% YoY growth)
   - Configuration drift between environments
@@ -192,7 +192,7 @@ const blogData = {
       `,
       technologies: ["Terraform", "AWS CloudFormation", "Ansible", "GitOps", "HashiCorp Vault", "Terragrunt"],
       caseStudy: {
-        industry: "E-commerce",
+        industry: "Ecommerce",
         companySize: "Mid-size (200-500 employees)",
         duration: "4 months",
         challenges: [
@@ -221,7 +221,7 @@ const blogData = {
       coverImage: "/assets/work/monitoring-system.svg",
       date: "2025-02-18",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "7 min read",
@@ -240,7 +240,7 @@ const blogData = {
   
   ## The Solution
   
-  I designed and implemented a comprehensive monitoring solution that provided end-to-end visibility:
+  I designed and implemented a comprehensive monitoring solution that provided end to end visibility:
   
   ### 1. Metrics Collection and Storage
   
@@ -331,7 +331,7 @@ const blogData = {
       coverImage: "/assets/work/container-orchestration.svg",
       date: "2025-01-22",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "10 min read",
@@ -441,7 +441,7 @@ const blogData = {
       coverImage: "/assets/work/gitops-workflow.svg",
       date: "2025-01-05",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "8 min read",
@@ -551,7 +551,7 @@ const blogData = {
       coverImage: "/assets/work/disaster-recovery.svg",
       date: "2025-04-05",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "9 min read",
@@ -649,23 +649,23 @@ const blogData = {
     
     "serverless-ecommerce-backend": {
       id: "serverless-ecommerce-backend",
-      title: "Serverless E-commerce Backend: Infinite Scalability, Minimal Management",
+      title: "Serverless Ecommerce Backend: Infinite Scalability, Minimal Management",
       slug: "serverless-ecommerce-backend",
       category: "Cloud",
-      excerpt: "Learn how a serverless architecture handled 10x Black Friday traffic with zero downtime while reducing costs by 65% for an e-commerce retailer.",
+      excerpt: "Learn how a serverless architecture handled 10x Black Friday traffic with zero downtime while reducing costs by 65% for an ecommerce retailer.",
       coverImage: "/assets/work/serverless-ecommerce.svg",
       date: "2025-03-15",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "9 min read",
-      metaTitle: "Serverless E-commerce Architecture | AWS Lambda | Cloud-Native Application Development",
-      metaDescription: "Discover how a serverless architecture helped an e-commerce site handle 10x traffic spikes while reducing operational costs by 65%. Learn implementation strategies from a cloud expert.",
+      metaTitle: "Serverless Ecommerce Architecture | AWS Lambda | Cloud-Native Application Development",
+      metaDescription: "Discover how a serverless architecture helped an ecommerce site handle 10x traffic spikes while reducing operational costs by 65%. Learn implementation strategies from a cloud expert.",
       content: `
   ## The Challenge
   
-  An established e-commerce retailer struggled with:
+  An established ecommerce retailer struggled with:
   
   - Inability to handle flash sales without downtime
   - High operational costs from overprovisioned infrastructure
@@ -675,7 +675,7 @@ const blogData = {
   
   ## The Solution
   
-  I architected and implemented a serverless e-commerce backend that fundamentally changed their operational model:
+  I architected and implemented a serverless ecommerce backend that fundamentally changed their operational model:
   
   ### 1. API Decomposition
   
@@ -733,7 +733,7 @@ const blogData = {
       `,
       technologies: ["AWS Lambda", "DynamoDB", "API Gateway", "CloudFront", "Step Functions", "SQS", "SNS"],
       caseStudy: {
-        industry: "E-commerce Retail",
+        industry: "Ecommerce Retail",
         companySize: "Medium (100-500 employees)",
         duration: "4 months",
         challenges: [
@@ -758,16 +758,16 @@ const blogData = {
       title: "Cloud-Native Data Pipeline: Real-Time Analytics at Scale",
       slug: "cloud-native-data-pipeline",
       category: "Cloud",
-      excerpt: "Discover how a cloud-native data pipeline reduced latency from 12+ hours to sub-minute for a retail analytics company.",
+      excerpt: "Discover how a cloud native data pipeline reduced latency from 12+ hours to sub-minute for a retail analytics company.",
       coverImage: "/assets/work/data-pipeline.svg",
       date: "2025-02-28",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "8 min read",
       metaTitle: "Real-Time Data Processing Pipeline | Cloud-Native Analytics | Big Data Architecture",
-      metaDescription: "Discover how a cloud-native data pipeline enabled real-time business insights from terabytes of data. Learn implementation strategies from a data engineering expert.",
+      metaDescription: "Discover how a cloud native data pipeline enabled real-time business insights from terabytes of data. Learn implementation strategies from a data engineering expert.",
       content: `
   ## The Challenge
   
@@ -781,7 +781,7 @@ const blogData = {
   
   ## The Solution
   
-  I designed and implemented a comprehensive cloud-native data pipeline that transformed their data processing capabilities:
+  I designed and implemented a comprehensive cloud native data pipeline that transformed their data processing capabilities:
   
   ### 1. Event-Driven Ingestion
   
@@ -805,7 +805,7 @@ const blogData = {
   
   ## The Results
   
-  The cloud-native data pipeline delivered exceptional outcomes:
+  The cloud native data pipeline delivered exceptional outcomes:
   
   - Reduced data processing latency from 12+ hours to sub-minute
   - Successfully handled 5x normal data volume during peak periods
@@ -835,7 +835,7 @@ const blogData = {
   
   ## Contact Me for Data Pipeline Architecture
   
-  If your organization is looking to build or modernize data processing capabilities, I can help design and implement a cloud-native data pipeline tailored to your specific requirements and use cases.
+  If your organization is looking to build or modernize data processing capabilities, I can help design and implement a cloud native data pipeline tailored to your specific requirements and use cases.
       `,
       technologies: ["Apache Kafka", "Kubernetes", "Spark", "S3", "Airflow", "Delta Lake"],
       caseStudy: {
@@ -868,7 +868,7 @@ const blogData = {
       coverImage: "/assets/work/secure-cloud.svg",
       date: "2025-02-10",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "10 min read",
@@ -918,7 +918,7 @@ const blogData = {
   
   The security-first cloud infrastructure delivered strong outcomes:
   
-  - Successfully passed third-party HIPAA compliance audit
+  - Successfully passed third party HIPAA compliance audit
   - Zero security incidents in the first year of operation
   - Security teams gained complete visibility into cloud operations
   - Development velocity maintained while meeting strict security requirements
@@ -982,7 +982,7 @@ const blogData = {
       coverImage: "/assets/work/auto-scaling.svg",
       date: "2025-01-18",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "9 min read",
@@ -1088,7 +1088,7 @@ const blogData = {
       coverImage: "/assets/work/fintech-migration.svg",
       date: "2025-01-05",
       author: {
-        name: "Your Name",
+        name: "Purushotam Sharma",
         avatar: "/assets/avatar.svg"
       },
       readTime: "11 min read",
@@ -1101,7 +1101,7 @@ const blogData = {
   
   - Strict regulatory compliance requirements (PCI-DSS, SOC2)
   - 24/7 operation requirements with no maintenance windows
-  - Complex integrations with third-party payment processors
+  - Complex integrations with third party payment processors
   - Legacy monolithic applications with limited documentation
   - Risk-averse stakeholders concerned about migration failures
   
@@ -1111,7 +1111,7 @@ const blogData = {
   
   ### 1. Phased Migration Strategy
   
-  Developed a step-by-step migration approach that decomposed the monolith into manageable components.
+  Developed a step by step migration approach that decomposed the monolith into manageable components.
   
   ### 2. Replatforming Core Services
   
@@ -1171,7 +1171,7 @@ const blogData = {
         challenges: [
           "Strict regulatory compliance requirements",
           "24/7 operation requirements",
-          "Complex third-party integrations",
+          "Complex third party integrations",
           "Limited documentation",
           "Risk-averse stakeholders"
         ],

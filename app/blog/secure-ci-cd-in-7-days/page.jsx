@@ -379,7 +379,7 @@ kubectl get events --sort-by='.lastTimestamp' | grep -i error
 
 1. **Skipping security scanning** - Always integrate security from day one
 2. **No rollback strategy** - Plan for failures before they happen
-3. **Inadequate testing** - Unit, integration, and end-to-end tests are crucial
+3. **Inadequate testing** - Unit, integration, and end to end tests are crucial
 4. **Missing monitoring** - You can't improve what you don't measure
 5. **Over-engineering** - Start simple and iterate
 
@@ -391,7 +391,7 @@ Ready to implement this in your startup? I offer consulting services to guide yo
 
 ---
 
-**About the Author**: Purushotam Sharma is a DevOps engineer with 4+ years of experience helping startups scale their infrastructure. He specializes in CI/CD, Kubernetes, and cloud-native technologies.
+**About the Author**: Purushotam Sharma is a DevOps engineer with 4+ years of experience helping startups scale their infrastructure. He specializes in CI/CD, Kubernetes, and cloud native technologies.
   `,
   coverImage: '/assets/work/cicd-pipeline.svg',
   date: '2024-01-15',

@@ -18,15 +18,24 @@ module.exports = {
 		}
 	  },
 	  fontFamily: {
-		primary: 'var(--font-jetbrainsMono)',
-		mono: 'var(--font-jetbrainsMono)'
+		primary: 'var(--font-inter)',
+		sans: 'var(--font-inter)',
+		display: 'var(--font-display)',
+		mono: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
 	  },
 	  extend: {
 		colors: {
-		  primary: '#1c1c22',
+		  primary: '#FFFFFF',
+		  /* 'white' is remapped to the ink colour so the existing text-white/xx and border-white/xx classes read as dark text on the light theme */
+		  white: '#171717',
+		  ink: '#171717',
+		  snow: '#FFFFFF',
+		  surface: '#F5F5F3',
+		  line: '#E7E5E2',
 		  accent: {
-			DEFAULT: '#00ff99',
-			hover: '#00e187'
+			DEFAULT: '#F2542D',
+			hover: '#D9431D',
+			soft: '#FDECE6'
 		  }
 		},
 		backgroundImage: {
@@ -36,8 +45,25 @@ module.exports = {
 		},
 		animation: {
 		  'gradient-y': 'gradient-y 6s ease infinite',
+		  'marquee': 'marquee 32s linear infinite',
+		  'float': 'float 5s ease-in-out infinite',
+		  'float-slow': 'float 7s ease-in-out infinite',
+		  'wave': 'wave 2.4s ease-in-out infinite',
 		},
 		keyframes: {
+		  'marquee': {
+			'0%': { transform: 'translateX(0)' },
+			'100%': { transform: 'translateX(-50%)' }
+		  },
+		  'wave': {
+			'0%, 60%, 100%': { transform: 'rotate(0deg)' },
+			'10%, 30%': { transform: 'rotate(16deg)' },
+			'20%, 40%': { transform: 'rotate(-8deg)' }
+		  },
+		  'float': {
+			'0%, 100%': { transform: 'translateY(0)' },
+			'50%': { transform: 'translateY(-8px)' }
+		  },
 		  'gradient-y': {
 			'0%, 100%': {
 			  'background-size': '400% 400%',

@@ -37,31 +37,31 @@ export async function POST(req) {
 
     <!-- Interactive Links Section -->
     <div style="margin-bottom: 40px;">
-      <a href="https://purushotam.devopsguy.in" style="display: block; background: rgba(0, 255, 153, 0.1); border-left: 4px solid #00ff99; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
+      <a href="https://purushotam.devopsguy.in" style="display: block; background: rgba(242, 84, 45, 0.1); border-left: 4px solid #F2542D; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
         <div style="display: flex; align-items: center;">
           <span style="font-size: 24px; margin-right: 15px;">🌐</span>
           <div>
-            <div style="font-weight: 600; font-size: 18px; color: #00ff99;">Check out my Portfolio</div>
+            <div style="font-weight: 600; font-size: 18px; color: #F2542D;">Check out my Portfolio</div>
             <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Explore my projects and experiences</div>
           </div>
         </div>
       </a>
 
-      <a href="https://www.linkedin.com/in/purushotamsharma/" style="display: block; background: rgba(0, 255, 153, 0.1); border-left: 4px solid #00ff99; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
+      <a href="https://www.linkedin.com/in/purushotamsharma/" style="display: block; background: rgba(242, 84, 45, 0.1); border-left: 4px solid #F2542D; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
         <div style="display: flex; align-items: center;">
           <span style="font-size: 24px; margin-right: 15px;">👥</span>
           <div>
-            <div style="font-weight: 600; font-size: 18px; color: #00ff99;">Connect on LinkedIn</div>
+            <div style="font-weight: 600; font-size: 18px; color: #F2542D;">Connect on LinkedIn</div>
             <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Let's grow our professional network</div>
           </div>
         </div>
       </a>
 
-      <a href="https://github.com/PurushotamSharma" style="display: block; background: rgba(0, 255, 153, 0.1); border-left: 4px solid #00ff99; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
+      <a href="https://github.com/PurushotamSharma" style="display: block; background: rgba(242, 84, 45, 0.1); border-left: 4px solid #F2542D; padding: 20px; margin-bottom: 15px; border-radius: 12px; text-decoration: none; color: white; transition: transform 0.2s;">
         <div style="display: flex; align-items: center;">
           <span style="font-size: 24px; margin-right: 15px;">💻</span>
           <div>
-            <div style="font-weight: 600; font-size: 18px; color: #00ff99;">Explore my GitHub</div>
+            <div style="font-weight: 600; font-size: 18px; color: #F2542D;">Explore my GitHub</div>
             <div style="font-size: 14px; color: #94a3b8; margin-top: 4px;">Check out my open-source contributions</div>
           </div>
         </div>
@@ -72,19 +72,19 @@ export async function POST(req) {
     <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; margin-top: 30px;">
       <div style="margin-bottom: 25px;">
         <p style="color: #fff; margin: 0 0 5px 0; font-size: 16px;">Best regards,</p>
-        <h2 style="color: #00ff99; margin: 0 0 5px 0; font-size: 24px; font-weight: 600;">Purushotam Sharma</h2>
+        <h2 style="color: #F2542D; margin: 0 0 5px 0; font-size: 24px; font-weight: 600;">Purushotam Sharma</h2>
         <p style="color: #94a3b8; margin: 0; font-size: 16px;">Technical Product Manager</p>
       </div>
 
       <!-- Social Links -->
       <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 15px; display: flex; gap: 15px; justify-content: center;">
-        <a href="https://purushotam.devopsguy.in" style="color: #00ff99; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(0, 255, 153, 0.1);">
+        <a href="https://purushotam.devopsguy.in" style="color: #F2542D; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(242, 84, 45, 0.1);">
           🌐 Portfolio
         </a>
-        <a href="https://www.linkedin.com/in/purushotamsharma/" style="color: #00ff99; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(0, 255, 153, 0.1);">
+        <a href="https://www.linkedin.com/in/purushotamsharma/" style="color: #F2542D; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(242, 84, 45, 0.1);">
           👥 LinkedIn
         </a>
-        <a href="https://github.com/PurushotamSharma" style="color: #00ff99; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(0, 255, 153, 0.1);">
+        <a href="https://github.com/PurushotamSharma" style="color: #F2542D; text-decoration: none; padding: 8px 15px; border-radius: 8px; background: rgba(242, 84, 45, 0.1);">
           💻 GitHub
         </a>
       </div>

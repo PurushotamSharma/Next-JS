@@ -19,11 +19,11 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-sm uppercase tracking-wider text-white/40 mb-4">
+          <p className="text-sm text-white/40 mb-4">
             Navigate
           </p>
           <ul className="space-y-2">
-            {person.navigation.map((item) => (
+            {person.footerNavigation.map((item) => (
               <li key={item.path}>
                 <Link
                   href={item.path}
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-sm uppercase tracking-wider text-white/40 mb-4">
+          <p className="text-sm text-white/40 mb-4">
             Profiles
           </p>
           <ul className="space-y-2">

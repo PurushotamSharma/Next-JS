@@ -39,7 +39,7 @@ export default function AboutPage() {
         <Container>
           <div className="max-w-3xl space-y-6 text-lg text-white/65 leading-relaxed">
             <p>
-              I started from hands-on infrastructure and DevOps engineering and gradually
+              I started from hands on infrastructure and DevOps engineering and gradually
               moved toward product ownership. That path gave me an unusual perspective: I
               understand how products are defined <em className="text-white/80 not-italic">and</em>{" "}
               how engineering systems are built and shipped.
@@ -47,7 +47,7 @@ export default function AboutPage() {
             <p>
               Today I work as a Technical Product Manager at {person.currentRole.company},
               where I focus on roadmap prioritization, feature definition, seller onboarding,
-              and monetization — while staying close to engineering delivery.
+              and monetization, while staying close to engineering delivery.
             </p>
             <p>{person.description}</p>
           </div>
@@ -78,8 +78,7 @@ export default function AboutPage() {
             <div>
               <Eyebrow>Also known across</Eyebrow>
               <p className="text-white/55 mb-6 leading-relaxed">
-                The same professional identity appears on LinkedIn, GitHub, Hashnode, and
-                Matofly. Canonical site:{" "}
+                The same professional identity appears on LinkedIn, GitHub and Hashnode. Canonical site:{" "}
                 <a href={person.url} className="text-accent hover:underline">
                   purushotam.devopsguy.in
                 </a>

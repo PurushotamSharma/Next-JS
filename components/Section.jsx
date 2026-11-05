@@ -16,7 +16,7 @@ export function Container({ children, className = "" }) {
 
 export function Eyebrow({ children }) {
   return (
-    <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">
+    <p className="text-accent text-sm font-medium mb-3">
       {children}
     </p>
   );

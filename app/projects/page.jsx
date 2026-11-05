@@ -26,7 +26,7 @@ export default function ProjectsPage() {
       />
       <PageHero
         title="Projects"
-        description="Product work first. Engineering and infrastructure projects are listed separately — they support product decisions, they are not the primary story."
+        description="Product work first. Engineering and infrastructure projects are listed separately, they support product decisions, they are not the primary story."
       />
 
       <Section className="!pt-0">
@@ -36,9 +36,9 @@ export default function ProjectsPage() {
           {sellmato ? (
             <Link
               href={sellmato.href}
-              className="block border border-accent/30 rounded-2xl p-6 md:p-8 mb-8 bg-[#1A2333]/35 hover:border-accent/50 transition-colors"
+              className="block border border-accent/30 rounded-2xl p-6 md:p-8 mb-8 bg-surface hover:border-accent/50 transition-colors"
             >
-              <p className="text-xs uppercase tracking-wider text-accent mb-2">
+              <p className="text-xs text-accent mb-2">
                 #1 Featured · Current role
               </p>
               <h2 className="text-3xl font-semibold mb-2">{sellmato.name}</h2>
@@ -52,11 +52,11 @@ export default function ProjectsPage() {
               <Link
                 key={project.id}
                 href={project.href}
-                className="group border border-white/10 rounded-xl p-6 bg-[#1A2333]/30 hover:border-accent/40 transition-colors"
+                className="group border border-white/10 rounded-xl p-6 bg-surface hover:border-accent/40 transition-colors"
               >
-                <p className="text-xs uppercase tracking-wider text-white/35 mb-2">
+                <p className="text-xs text-white/35 mb-2">
                   {project.workType === "independent"
-                    ? "Independent product work"
+                    ? "Client engagement"
                     : "Product"}
                 </p>
                 <h2 className="text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
@@ -70,7 +70,7 @@ export default function ProjectsPage() {
 
           <Eyebrow>Engineering / infrastructure projects</Eyebrow>
           <p className="text-sm text-white/45 mb-6 max-w-2xl">
-            {person.skills.engineeringMessage} These projects are the technical foundation —
+            {person.skills.engineeringMessage} These projects are the technical foundation , 
             not a claim that DevOps is the primary identity.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
@@ -80,7 +80,7 @@ export default function ProjectsPage() {
                 href={project.href}
                 className="group border border-white/10 rounded-xl p-6 hover:border-accent/40 transition-colors"
               >
-                <p className="text-xs uppercase tracking-wider text-white/40 mb-2">
+                <p className="text-xs text-white/40 mb-2">
                   Engineering
                 </p>
                 <h2 className="text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
